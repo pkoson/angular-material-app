@@ -1,0 +1,14 @@
+development: 
+  secret_token: 
+  facebook_key: 
+  facebook_secret: 
+
+test: 
+  secret_token: 
+  facebook_key: 
+  facebook_secret: 
+
+production: 
+  secret_token: 
+  facebook_key: 
+  facebook_secret: 
