@@ -8,3 +8,5 @@
 
 
   User.create(email: "admin@example.com", name: "Admin", password: "admin1234", password_confirmation: "admin1234", role: 8)
+
+  (1..30).each_with_index { |index,user| User.create(email: "user_#{index}@example.com", name: "User_#{index}", password: "user1234", password_confirmation: "user1234", role: 1) }
