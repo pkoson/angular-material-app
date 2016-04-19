@@ -22,9 +22,16 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    if @user.update_attributes(user_params)
+      render json: @user, status: :ok
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @user.destroy
+     render json: nil, status: :ok
   end
 
 private

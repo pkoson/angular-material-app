@@ -4,7 +4,8 @@ RSpec.describe "Users", type: :request do
 
   describe "GET /v1/users #index" do
     it "should return status 401 unauthorized" do
-      get 'http://api.lvh.me:3000/v1/users', nil, { 'CONTENT_TYPE' => 'application/json', 'access-token' => '', 'client' => '', 'uid' => '' }
+      get 'http://api.lvh.me:3000/v1/users', nil, { 'CONTENT_TYPE' => 'application/json', 'access-token' => '', 
+                                                    'client' => '', 'uid' => '' }
       json = JSON.parse(response.body)
       expect(json).to include('errors')
       expect(response).to have_http_status(401)
@@ -36,7 +37,8 @@ RSpec.describe "Users", type: :request do
 
     it "should return status 422 unprocessable entity" do
       password = Faker::Internet.password(8)
-      new_user = { "user": { "name": "", "nickname": "", "email": "", "role": "", "password": "", "password_confirmation": "" } }
+      new_user = { "user": { "name": "", "nickname": "", "email": "", "role": "", 
+                             "password": "", "password_confirmation": "" } }
       post 'http://api.lvh.me:3000/v1/users', new_user.to_json, { 'CONTENT_TYPE' => 'application/json', 
                                                                   'access-token' => response.header['access-token'], 
                                                                   'client' => response.header['client'], 
@@ -82,6 +84,110 @@ RSpec.describe "Users", type: :request do
                                                                 }
       json = JSON.parse(response.body)
       expect(json.count).to be > 0
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "PATCH /v1/users #update" do
+    before(:each) do
+      user = FactoryGirl.create(:user_is_admin)
+      params = { "email" => user.email, "password" => user.password }
+      post 'http://api.lvh.me:3000/v1/auth/sign_in', params.to_json, { 'CONTENT_TYPE' => 'application/json'}
+    end
+
+    it "should return status 200 ok updated" do
+      password = Faker::Internet.password(8)
+      new_user = { 
+        "user": {
+            "name": Faker::Name.name, 
+            "nickname": Faker::Internet.user_name,
+            "email": Faker::Internet.email,
+            "role": "4",
+            "password": password,
+            "password_confirmation": password
+        }
+      }
+      post 'http://api.lvh.me:3000/v1/users', new_user.to_json, { 'CONTENT_TYPE' => 'application/json', 
+                                                                  'access-token' => response.header['access-token'], 
+                                                                  'client' => response.header['client'], 
+                                                                  'uid' => response.header['uid'] 
+                                                                }
+      json = JSON.parse(response.body)
+
+      update_user = { "user": { "role": "2" } }
+      patch "http://api.lvh.me:3000/v1/users/#{json['id']}", update_user.to_json,{ 'CONTENT_TYPE' => 'application/json', 
+                                                                  'access-token' => response.header['access-token'], 
+                                                                  'client' => response.header['client'], 
+                                                                  'uid' => response.header['uid'] 
+                                                                }
+
+      json = JSON.parse(response.body)
+      expect(json['role']).to eq(2)
+      expect(response).to have_http_status(200)
+    end
+
+    it "should return status 422 unprocessable entity" do
+      password = Faker::Internet.password(8)
+      new_user = { 
+        "user": {
+            "name": Faker::Name.name, 
+            "nickname": Faker::Internet.user_name,
+            "email": Faker::Internet.email,
+            "role": "4",
+            "password": password,
+            "password_confirmation": password
+        }
+      }
+      post 'http://api.lvh.me:3000/v1/users', new_user.to_json, { 'CONTENT_TYPE' => 'application/json', 
+                                                                  'access-token' => response.header['access-token'], 
+                                                                  'client' => response.header['client'], 
+                                                                  'uid' => response.header['uid'] 
+                                                                }
+      json = JSON.parse(response.body)
+
+      update_user = { "user": { "email": "", "password": Faker::Internet.password(4) } }
+      patch "http://api.lvh.me:3000/v1/users/#{json['id']}", update_user.to_json,{ 'CONTENT_TYPE' => 'application/json', 
+                                                                  'access-token' => response.header['access-token'], 
+                                                                  'client' => response.header['client'], 
+                                                                  'uid' => response.header['uid'] 
+                                                                }
+
+      expect(response).to have_http_status(422)
+    end
+  end
+
+  describe "DELETE /v1/users #destroy" do
+    before(:each) do
+      user = FactoryGirl.create(:user_is_admin)
+      params = { "email" => user.email, "password" => user.password }
+      post 'http://api.lvh.me:3000/v1/auth/sign_in', params.to_json, { 'CONTENT_TYPE' => 'application/json'}
+    end
+
+    it "should return status 200 ok destroy" do
+      password = Faker::Internet.password(8)
+      new_user = { 
+        "user": {
+            "name": Faker::Name.name, 
+            "nickname": Faker::Internet.user_name,
+            "email": Faker::Internet.email,
+            "role": "4",
+            "password": password,
+            "password_confirmation": password
+        }
+      }
+      post 'http://api.lvh.me:3000/v1/users', new_user.to_json, { 'CONTENT_TYPE' => 'application/json', 
+                                                                  'access-token' => response.header['access-token'], 
+                                                                  'client' => response.header['client'], 
+                                                                  'uid' => response.header['uid'] 
+                                                                }
+      json = JSON.parse(response.body)
+
+      delete "http://api.lvh.me:3000/v1/users/#{json['id']}", nil, { 'CONTENT_TYPE' => 'application/json', 
+                                                                  'access-token' => response.header['access-token'], 
+                                                                  'client' => response.header['client'], 
+                                                                  'uid' => response.header['uid'] 
+                                                                }
+
       expect(response).to have_http_status(200)
     end
   end
