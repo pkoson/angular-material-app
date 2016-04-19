@@ -4,50 +4,21 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     users = User.all
-    render json: {
-      data: {
-        users: users
-      }
-    }, status: 200
+    render json: users, status: :ok
   end
 
   def create
     user = User.new(user_params)
 
     if user.save
-      data = {
-        user: {
-          name: user.name, 
-          nickname: user.nickname, 
-          email: user.email, 
-          role: user.role, 
-          created_at: user.created_at
-        }
-      }
-      success = true
-      status = 201
+      render json: user, status: :created
     else
-      data = user.errors
-      success = false
-      status = 200
+      render json: user.errors, status: :unprocessable_entity
     end
-
-    render json: {
-      success: success,
-      data: data
-    }, status: status
   end
 
   def show
-    render json: {
-      data: {
-        user: {
-          name: @user.name, 
-          nickname: @user.nickname, 
-          email: @user.email
-        }
-      }
-    }, status: 200
+    render json: @user, status: :ok
   end
 
   def update

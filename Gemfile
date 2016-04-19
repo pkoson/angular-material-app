@@ -5,7 +5,7 @@ gem 'rails-api'
 gem 'pg'
 gem 'puma' # Use puma as the app server
 gem 'figaro' # Configuration values often include sensitive information.
-gem 'active_model_serializers'
+gem 'active_model_serializers', git: 'git@github.com:rails-api/active_model_serializers.git'
 gem 'devise' 
 gem 'devise_token_auth' 
 gem 'omniauth'
