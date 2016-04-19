@@ -11,6 +11,7 @@ import components from './components';
 import services from './services';
 
 import home from './routes/home/';
+import users from './routes/users/';
 
 import 'angular-material/angular-material.css';
 
@@ -26,9 +27,9 @@ const ngModule = angular
         angularAnimate,
         services,
         components,
-        home
+        home,
+        users
       ])
       .config(config)
       .config(routing)
       .config(ngTheme)
-      

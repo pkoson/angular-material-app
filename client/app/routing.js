@@ -15,4 +15,10 @@ export default function routes($stateProvider) {
       controllerAs: 'home'
     })
 
+    .state('users', {
+      url: '/users/:usersId',
+      template: require('./routes/users/users.html'),
+      controller: 'UsersController',
+      controllerAs: 'users'
+    })
   };
