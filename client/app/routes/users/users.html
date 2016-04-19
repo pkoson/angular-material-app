@@ -1,11 +1,10 @@
-<md-card>
-  <md-card-title>
-    <md-card-title-text>
-      <span class="md-headline">{{users.users.name}}</span>
-      <span class="md-subhead">{{users.users.email}}</span>
-    </md-card-title-text>
-    <md-card-title-media>
-      <div class="md-media-sm card-media">{{users.users.photo}}</div>
-    </md-card-title-media>
-  </md-card-title>
-</md-card>
+<md-sidenav md-component-id="right" md-is-locked-open="$mdMedia('min-width: 333px')" class="md-sidenav-right md-whiteframe-8dp" md-theme="default">
+  <md-subheader class="md-no-sticky">Users List</md-subheader>
+  <md-list-item ng-repeat="user in usersCtr.users">
+      <a ui-sref="users.show({id: user.id})">{{user.name}}</a>
+  </md-list-item>
+</md-sidenav>
+
+<div ui-view>
+
+</div>

@@ -12,6 +12,8 @@ import services from './services';
 
 import home from './routes/home/';
 import users from './routes/users/';
+import user from './routes/user/';
+
 
 import 'angular-material/angular-material.css';
 
@@ -28,7 +30,8 @@ const ngModule = angular
         services,
         components,
         home,
-        users
+        users,
+        user
       ])
       .config(config)
       .config(routing)

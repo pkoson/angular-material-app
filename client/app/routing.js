@@ -16,9 +16,16 @@ export default function routes($stateProvider) {
     })
 
     .state('users', {
-      url: '/users/:usersId',
+      url: '/users',
       template: require('./routes/users/users.html'),
       controller: 'UsersController',
-      controllerAs: 'users'
+      controllerAs: 'usersCtr'
+    })
+
+    .state('users.show', {
+      url: '/user/:id',
+      template: require('./routes/user/user.html'),
+      controller: 'UserController',
+      controllerAs: 'userCtr'
     })
   };
