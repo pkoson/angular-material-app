@@ -20,7 +20,6 @@ import 'angular-material/angular-material.css';
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
-
 const ngModule = angular
       .module('app', [
         uirouter,

@@ -1,11 +1,25 @@
 <md-card>
   <md-card-title>
     <md-card-title-text>
-      <span class="md-headline">{{userCtr.name}}</span>
-      <span class="md-subhead">{{userCtr.email}}</span>
+      <span class="md-headline">{{userCtr.user.name}}</span>
+      <span class="md-subhead">{{userCtr.user.email}}</span>
     </md-card-title-text>
     <md-card-title-media>
-      <div class="md-media-sm card-media">{{userCtr.photo}}</div>
+      <div class="md-media-sm card-media">{{userCtr.user.photo}}</div>
     </md-card-title-media>
   </md-card-title>
+  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <md-button class="md-fab" aria-label="Eat cake">
+              <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab md-primary" aria-label="Use Android">
+            <md-icon md-svg-src="img/icons/android.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-disabled="true" aria-label="Comment">
+              <md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab md-primary md-hue-2" aria-label="Profile">
+              <md-icon md-svg-src="img/icons/ic_people_24px.svg"></md-icon>
+          </md-button>
+      </section>
 </md-card>
