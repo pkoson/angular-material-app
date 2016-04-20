@@ -6,6 +6,7 @@ import ngtokenauth from './lib/ng-token-auth.min.js';
 import routing from './routing';
 import config from './config/main';
 import ngTheme from './config/ngTheme';
+import constants from './config/constants';
 
 import components from './components';
 import services from './services';
@@ -32,6 +33,7 @@ const ngModule = angular
         users,
         user
       ])
+      .constant('appConfig', constants)
       .config(config)
       .config(routing)
       .config(ngTheme)

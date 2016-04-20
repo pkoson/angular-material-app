@@ -1,13 +1,14 @@
 export default class UsersController {
-  constructor($http, $location) {
+  constructor($http, $location, appConfig) {
     this.$http = $http;
     this.$location = $location;
+    this.appConfig = appConfig;
     this.getUsers();
   }
 
   getUsers(){
     this.$http
-      .get('http://api.lvh.me:3000/v1/users')
+      .get(this.appConfig.apiUrl+'/users')
       .then((response) => {
         this.users = response.data.data.users
         return  this.users
