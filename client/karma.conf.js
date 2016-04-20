@@ -1,4 +1,4 @@
-var webpackConfig = require('./webpack.config');
+var webpackConfig = require('./webpack.test');
 webpackConfig.entry = {}
 
 // Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
@@ -17,23 +17,23 @@ module.exports = function karmaConfig (config) {
 
       // Reference: https://github.com/karma-runner/karma-coverage
       // Output code coverage files
-      //'coverage'
+      'coverage'
     ],
 
     files: [
       // Grab all files in the app folder that contain .test.
-      './app/tests.webpack.js'
+      './tests.webpack.js'
     ],
 
     preprocessors: {
       // Reference: http://webpack.github.io/docs/testing.html
       // Reference: https://github.com/webpack/karma-webpack
       // Convert files with webpack and load sourcemaps
-      'app/tests.webpack.js': ['webpack', 'sourcemap']
+      'tests.webpack.js': ['webpack', 'sourcemap']
     },
 
     browsers: [
-      // Run tests using PhantomJS
+      // Run tests using Chrome
       'Chrome'
     ],
 
@@ -41,10 +41,17 @@ module.exports = function karmaConfig (config) {
 
     // Configure code coverage reporter
     coverageReporter: {
-      dir: 'build/coverage/',
-      type: 'html'
+      dir: 'coverage',
+      reporters: [
+        { type: 'text', subdir: '.', file: 'coverage-report.txt' },
+        { type: 'html', subdir: 'report-html' }
+      ]
     },
 
-    webpack: webpackConfig
+    webpack: webpackConfig,
+
+    webpackMiddleware: {
+      noInfo: true
+    }
   });
 };
