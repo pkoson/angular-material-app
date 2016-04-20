@@ -9,17 +9,17 @@
     </md-card-title-media>
   </md-card-title>
   <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-          <md-button class="md-fab" aria-label="Eat cake">
-              <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
-          </md-button>
-          <md-button class="md-fab md-primary" aria-label="Use Android">
-            <md-icon md-svg-src="img/icons/android.svg"></md-icon>
-          </md-button>
-          <md-button class="md-fab" ng-disabled="true" aria-label="Comment">
-              <md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>
-          </md-button>
-          <md-button class="md-fab md-primary md-hue-2" aria-label="Profile">
-              <md-icon md-svg-src="img/icons/ic_people_24px.svg"></md-icon>
-          </md-button>
-      </section>
+      <md-button class="md-fab md-primary" aria-label="edit">
+        <md-icon md-svg-icon="pen"></md-icon>
+        <md-tooltip>
+          Edit user profile
+        </md-tooltip>
+      </md-button>
+      <md-button class="md-fab md-warn" aria-label="Use Android">
+        <md-icon md-svg-icon="account-remove"></md-icon>
+        <md-tooltip>
+          Delete user
+        </md-tooltip>
+      </md-button>
+  </section>
 </md-card>
