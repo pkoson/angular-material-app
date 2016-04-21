@@ -5,7 +5,7 @@ export default class loginController {
     this.loginForm = {};
   }
 
-  login(loginForm) {
+  login() {
     this.$auth
       .submitLogin(this.loginForm)
         .then(this.handleSuccess.bind(this))
