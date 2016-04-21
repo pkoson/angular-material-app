@@ -1,6 +1,6 @@
-import loginController  from './loginForm.controller';
+import LoginFormCtrl  from './LoginFormCtrl';
 
-describe('Components/loginForm/loginFormController', () => {
+describe('Components/loginForm/LoginFormCtrl', () => {
   // Define all variables for inject
   let fakedData = {};
   let mocks = {};   
@@ -23,7 +23,7 @@ describe('Components/loginForm/loginFormController', () => {
   beforeEach(() => { // all this functions will be evaluate before each tests
     angular
       .module('mock.app.login', []) // create new angular fake module
-      .controller('loginController', loginController); // add our controller to this module
+      .controller('LoginFormCtrl', LoginFormCtrl); // add our controller to this module
     angular.mock.module('mock.app.login'); // create mock for new created fake module
 
     window.module($provide => { // window.module comes from angular-mock lib
@@ -35,7 +35,7 @@ describe('Components/loginForm/loginFormController', () => {
     window.inject((_$controller_, _$q_, _$rootScope_) => {
       $q = _$q_;
       $rootScope = _$rootScope_;
-      $controller = _$controller_('loginController');
+      $controller = _$controller_('LoginFormCtrl');
     });
   });
 

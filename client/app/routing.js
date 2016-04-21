@@ -4,8 +4,8 @@ export default function routes($stateProvider) {
     .state('login', {
       url: '/login',
       template: require('./components/loginForm/loginForm.html'),
-      controller: 'loginController',
-      controllerAs: 'loginCtr'
+      controller: 'LoginFormCtrl',
+      controllerAs: 'LoginFormCtrl'
     })
 
     .state('home', {
@@ -13,6 +13,6 @@ export default function routes($stateProvider) {
       template: require('./routes/home/home.html'),
       controller: 'HomeController',
       controllerAs: 'home'
-    })
+    });
 
-  };
+  }

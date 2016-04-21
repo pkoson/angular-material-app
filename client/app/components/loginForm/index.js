@@ -3,9 +3,9 @@ import uirouter from 'angular-ui-router';
 import ngtokenauth from '../../lib/ng-token-auth.min.js';
 import authConfig from '../../config/auth';
 
-import loginController from './loginForm.controller';
+import LoginFormCtrl from './LoginFormCtrl';
 
 export default angular.module('app.login', [uirouter, ngtokenauth])
-  .controller('loginController', loginController)
+  .controller('LoginFormCtrl', LoginFormCtrl)
   .config(authConfig)
   .name;

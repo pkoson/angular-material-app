@@ -1,4 +1,4 @@
-export default class loginController {
+export default class LoginFormCtrl {
   constructor($auth, $state) {
     this.$state = $state;
     this.$auth = $auth;
