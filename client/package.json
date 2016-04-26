@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "build": "webpack --config webpack.build.js --bail -p",
+    "build": "rm -f ../public/*.* && webpack --config webpack.build.js --bail -p",
     "start": "clear && node figlet.js && node node_modules/.bin/webpack-dev-server --inline --hot --colors --history-api-fallback --host=0.0.0.0 --content-base app",
     "test": "clear && node figlet.js && karma start && cat coverage/coverage-report.txt",
     "test:live": "clear && node figlet.js && karma start --auto-watch --no-single-run"
