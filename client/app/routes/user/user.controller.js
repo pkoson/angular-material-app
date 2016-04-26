@@ -10,8 +10,8 @@ export default class UserController {
     this.$http
       .get(this.appConfig.apiUrl+'/users/'+this.usersId)
       .then((response) => {
-        this.user = response.data.data.user
-        return  this.user
-      })
+        this.user = response.data;
+        return  this.user;
+      });
   }
 }

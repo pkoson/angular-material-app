@@ -10,9 +10,9 @@ export default class UsersController {
     this.$http
       .get(this.appConfig.apiUrl+'/users')
       .then((response) => {
-        this.users = response.data.data.users
-        return  this.users
-      })
+        this.users = response.data;
+        return  this.users;
+      });
   }
   goToUrl(path) {
     this.$location.path(path);

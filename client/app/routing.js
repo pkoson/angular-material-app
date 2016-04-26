@@ -28,4 +28,3 @@ export default function routes($stateProvider) {
       controllerAs: 'userCtr'
     });
   }
-}
