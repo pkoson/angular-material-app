@@ -1,6 +1,8 @@
 // Modules
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = function makeWebpackConfig (options) {
 
@@ -47,7 +49,7 @@ module.exports = function makeWebpackConfig (options) {
   } else {
     config.output = {
       // Absolute output directory
-      path: __dirname + '/public/javascripts',
+      path: '../public/',
 
       // Output path from the view of the page
       // Uses webpack-dev-server in development
@@ -60,7 +62,7 @@ module.exports = function makeWebpackConfig (options) {
       // Filename for non-entry points
       // Only adds hash in build mode
       chunkFilename: BUILD ? '[name].[hash].js' : '[name].bundle.js'
-    }
+    };
   }
 
    /**
@@ -88,7 +90,7 @@ module.exports = function makeWebpackConfig (options) {
   config.module = {
     preLoaders: [],
     loaders: [
-        { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+        { test: /\.js$/, loader: 'ng-annotate!babel', exclude: /node_modules/ },
         { test: /\.html$/, loader: 'raw-loader', exclude: /node_modules/ },
         { test: /\.jpg$/, loader: 'file-loader' },
         
@@ -160,6 +162,8 @@ module.exports = function makeWebpackConfig (options) {
     })
   ];
 
+
+
   // Skip rendering index.html in test mode
   if (!TEST) {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
@@ -168,7 +172,7 @@ module.exports = function makeWebpackConfig (options) {
       new HtmlWebpackPlugin({
         template: './app/index.html',
         inject: 'body',
-        minify: BUILD
+        minify: false
       })
     );
   }

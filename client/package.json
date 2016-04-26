@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "build": "webpack --config webpack.build.js --bail -p",
     "start": "clear && node figlet.js && node node_modules/.bin/webpack-dev-server --inline --hot --colors --history-api-fallback --host=0.0.0.0 --content-base app",
     "test": "clear && node figlet.js && karma start && cat coverage/coverage-report.txt",
     "test:live": "clear && node figlet.js && karma start --auto-watch --no-single-run"
@@ -41,6 +42,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
+    "ng-annotate-loader": "^0.1.0",
     "node-sass": "^3.4.2",
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "^1.4.3",
