@@ -14,15 +14,26 @@ module.exports = function makeWebpackConfig (options) {
   var TEST = !!options.TEST;
 
 
+
+  // Reference: https://github.com/webpack/extract-text-webpack-plugin
+  // Extract css files
+  // Disabled when in test mode or not in build mode
+  var extractCSS = new ExtractTextPlugin('[hash].css', {
+    disable: !BUILD || TEST
+  });
+
+
+
   /**
    * Config
    * Reference: http://webpack.github.io/docs/configuration.html
    * This is the object where all configuration gets set
    */
   var config = {};
-
   config.context = __dirname + '/';
   
+
+
   /**
    * Entry
    * Reference: http://webpack.github.io/docs/configuration.html#entry
@@ -36,6 +47,8 @@ module.exports = function makeWebpackConfig (options) {
       app: './app/index.js'
     };
   }
+  
+
 
   /**
    * Output
@@ -64,6 +77,8 @@ module.exports = function makeWebpackConfig (options) {
     };
   }
 
+
+
    /**
    * Devtool
    * Reference: http://webpack.github.io/docs/configuration.html#devtool
@@ -76,6 +91,7 @@ module.exports = function makeWebpackConfig (options) {
   } else {
     config.devtool = 'eval';
   }
+
 
 
   /**
@@ -106,17 +122,15 @@ module.exports = function makeWebpackConfig (options) {
   //
   // Reference: https://github.com/postcss/postcss-loader
   // Postprocess your css with PostCSS plugins
+  
   var cssLoader = {
     test: /\.css$/,
-    loader: 'style-loader!css-loader?limit=1024&name=css/[name].[ext]'
+    loader: extractCSS.extract('style-loader','css-loader')
   };
   
   var sassLoader = {
     test: /\.scss$/,
-    loader: ExtractTextPlugin.extract(
-          'style?sourceMap',
-          '!css!resolve-url!sass?sourceMap!'
-    )
+    loader: extractCSS.extract('style-loader','css-loader','resolve-url','sass','sourceMap')
   };
 
   // Skip loading css in test mode
@@ -128,7 +142,18 @@ module.exports = function makeWebpackConfig (options) {
   }
 
   // Add cssLoader to the loader list
-  config.module.loaders.push(cssLoader);
+  config.module.loaders.push(cssLoader, sassLoader);
+
+
+  /**
+   * Plugins
+   * Reference: http://webpack.github.io/docs/configuration.html#plugins
+   * List: http://webpack.github.io/docs/list-of-plugins.html
+   */
+
+  config.plugins = [ extractCSS ];
+  
+
 
   // ISPARTA LOADER
   // Reference: https://github.com/ColCh/isparta-instrumenter-loader
@@ -145,22 +170,6 @@ module.exports = function makeWebpackConfig (options) {
       loader: 'isparta-instrumenter'
     });
   }
-
-
-  /**
-   * Plugins
-   * Reference: http://webpack.github.io/docs/configuration.html#plugins
-   * List: http://webpack.github.io/docs/list-of-plugins.html
-   */
-  config.plugins = [
-    // Reference: https://github.com/webpack/extract-text-webpack-plugin
-    // Extract css files
-    // Disabled when in test mode or not in build mode
-    new ExtractTextPlugin('[name].[hash].css', {
-      disable: !BUILD || TEST
-    })
-  ];
-
 
 
   // Skip rendering index.html in test mode
