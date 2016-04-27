@@ -23,6 +23,7 @@
   "homepage": "https://gitlab.com/AkraPolska/akra-people2#README",
   "devDependencies": {
     "angular-mocks": "^1.5.5",
+    "angular-translate": "^2.11.0",
     "angular-ui-router": "^0.2.18",
     "babel-core": "^6.7.6",
     "babel-loader": "^6.2.4",

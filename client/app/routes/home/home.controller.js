@@ -1,5 +1,5 @@
 export default class HomeController {
-  constructor($http) {
+  constructor($http,$translate) {
     this.$http = $http;
     this.getUsers();
   }
@@ -8,5 +8,8 @@ export default class HomeController {
     this.$http
       .get('/users')
       .then(response => this.users = response.data);
+  }
+  changeLanguageaa(lang){
+    $translate.use(lang);
   }
 }

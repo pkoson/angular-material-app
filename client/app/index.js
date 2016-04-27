@@ -16,6 +16,8 @@ import 'angular-material/angular-material.css';
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
+import angularTranslate from 'angular-translate'
+
 
 const ngModule = angular
       .module('app', [
@@ -34,4 +36,4 @@ const ngModule = angular
         components,
         home
       ]);
-      
+
