@@ -7,6 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 server 'dev.akra.net', port: 5001, user: 'sportmatrix', roles: %w{web app db}
+set :rsync_host, ''
 
 set :rails_env, :production
 set :default_shell, "/bin/bash --login"
@@ -30,6 +31,20 @@ set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
+
+namespace :npm do
+  desc 'Precompile node locally'
+  task :precompile do
+    on roles(:web) do
+      run_locally do 
+        with rails_env: :production do
+          execute "cd ./client && npm run build" 
+        end 
+        execute "rsync -av --delete -e 'ssh -p 5001' ./public/ sportmatrix@dev.akra.net:#{shared_path}/public/client/" 
+      end 
+    end
+  end
+end
 
 # role-based syntax
 # ==================
