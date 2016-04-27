@@ -1,4 +1,11 @@
-<h1> 
-  Users 
-</h1>
-{{home.users}}
+<main-navbar>
+</main-navbar>
+<div layout="row" flex>
+  <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" class="md-sidenav-left md-whiteframe-8dp" md-theme="default">
+    <side-nav></side-Nav>
+  </md-sidenav>
+  <md-content layout-fill>
+    <div ui-view>
+    </div>
+  </md-content>
+</div>
