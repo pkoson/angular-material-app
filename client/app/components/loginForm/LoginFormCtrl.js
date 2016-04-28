@@ -3,6 +3,7 @@ export default class LoginFormCtrl {
     this.$state = $state;
     this.$auth = $auth;
     this.loginForm = {};
+    this.validateError = false;
   }
 
   login() {
@@ -17,6 +18,7 @@ export default class LoginFormCtrl {
   }
 
   handleError(response) {
-    console.log("error", resp);
+    console.log("error", response);
+    this.validateError = true;
   }
 }

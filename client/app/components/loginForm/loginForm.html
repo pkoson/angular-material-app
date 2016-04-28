@@ -1,11 +1,10 @@
-<div layout="row" layout-align="center center" layout-margin>
-  
+<div layout="row" layout-align="center center" flex>
+
   <div class="md-whiteframe-z2">
-    
     <md-toolbar>
-      <h2 class="md-toolbar-tools"><span>Login</span></h2>
+      <h2 class="md-toolbar-tools"><span>Login to AKRA People</span></h2>
     </md-toolbar>
-    
+
     <form layout="column" layout-padding name="userForm" ng-submit="LoginFormCtrl.login(LoginFormCtrl.loginForm)">
       <md-input-container>
         <label>Email</label>
@@ -16,8 +15,14 @@
       </md-input-container>
       <md-input-container>
         <label>Password</label>
-        <input name="password" type="password" ng-model="LoginFormCtrl.loginForm.password"/>
+        <input name="password" type="password" ng-model="LoginFormCtrl.loginForm.password" required/>
+        <div ng-messages="userForm.password.$error">
+          <div ng-message="required">This is required!</div>
+        </div>
       </md-input-container>
+      <div ng-show="LoginFormCtrl.validateError">
+        Wrong password or email
+      </div>
       <div layout="row" layout-align="center center">
         <md-button type="submit" class="md-raised md-primary">Login</md-button>
         <div flex="flex"></div>
