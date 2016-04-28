@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-AkraPeople2::Application.config.secret_token = ENV['secret_token']
+SportMatrix::Application.config.secret_token = ENV['secret_token']
