@@ -1,4 +1,4 @@
-export default class CandidatesController {
+export default class CandidatesCtrl {
   constructor($http, $location, appConfig) {
     this.$http = $http;
     this.appConfig = appConfig;

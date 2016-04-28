@@ -30,7 +30,7 @@ export default function routes($stateProvider) {
       .state('home.candidates', {
         url: 'candidates',
         template: require('./routes/candidates/candidates.html'),
-        controller: 'CandidatesController',
+        controller: 'CandidatesCtrl',
         controllerAs: 'CandidatesCtrl'
       });
     }

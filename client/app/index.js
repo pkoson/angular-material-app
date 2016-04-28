@@ -14,8 +14,9 @@ import services from './services';
 import home from './routes/home/';
 import users from './routes/users/';
 import user from './routes/user/';
-import candidates from './routes/candidates'
+import candidates from './routes/candidates';
 
+import style from './assets/stylesheets/style.css';
 
 import 'angular-material/angular-material.css';
 
