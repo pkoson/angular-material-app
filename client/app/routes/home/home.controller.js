@@ -10,7 +10,4 @@ export default class HomeController {
       .get('/users')
       .then(response => this.users = response.data);
   }
-  changeLanguage(lang){
-    this.$translate.use(lang);
-  }
 }
