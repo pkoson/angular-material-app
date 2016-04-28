@@ -17,6 +17,7 @@ import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
 import angularTranslate from 'angular-translate'
+import angularTranslateLoaderUrl from 'angular-translate-loader-url'
 
 
 const ngModule = angular
@@ -26,6 +27,8 @@ const ngModule = angular
         ngtokenauth,
         angularMaterial,
         angularAnimate,
+        angularTranslate,
+        angularTranslateLoaderUrl,
 
         // Configs
         config,
