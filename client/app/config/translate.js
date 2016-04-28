@@ -1,4 +1,4 @@
 export default function translate($translateProvider) {
-  $translateProvider.useUrlLoader('./test.json');
+  $translateProvider.useUrlLoader('http://api.lvh.me:3000/v1/locales');
   $translateProvider.preferredLanguage('pl');
 }
