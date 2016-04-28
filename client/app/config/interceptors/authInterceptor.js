@@ -6,6 +6,6 @@ export default function authInterceptor($q, $location) {
         console.log("Response Error 401");
       }
       return $q.reject(rejection);
-  }
-  }
+    }
+  };
 }
