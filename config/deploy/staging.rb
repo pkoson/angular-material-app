@@ -32,9 +32,9 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
 
-namespace :npm do
-  desc 'Precompile node locally'
-  task :precompile do
+namespace :angular do
+  desc 'Compile and deploy angular app'
+  task :deploy do
     on roles(:web) do
       run_locally do 
         with rails_env: :production do
