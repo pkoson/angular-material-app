@@ -14,6 +14,7 @@ import services from './services';
 import home from './routes/home/';
 import users from './routes/users/';
 import user from './routes/user/';
+import candidates from './routes/candidates'
 
 
 import 'angular-material/angular-material.css';
@@ -31,7 +32,8 @@ const ngModule = angular
         components,
         home,
         users,
-        user
+        user,
+        candidates
       ])
       .constant('appConfig', constants)
       .config(config)
