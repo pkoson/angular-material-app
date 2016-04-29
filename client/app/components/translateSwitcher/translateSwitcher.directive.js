@@ -1,6 +1,6 @@
 export default function translateSwitcher($translate, $rootScope) {
+  "ngInject";
   let translateSwitchCtrl = (scope) => {
-    let setCurrentLanguage;
 
     scope.changeLanguage = (lang) => {
       $translate.use(lang);

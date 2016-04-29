@@ -1,9 +1,11 @@
 import translateSwitcher  from './translateSwitcher.directive';
 
 describe('translateSwitcher', () => {
-  let fakerData = {};
+  let fakeData = {};
   let mocks = {};
   let $compile, $rootScope;
+
+  fakeData.lang = 'xxx';
 
   beforeEach(() => {
     angular
@@ -30,6 +32,16 @@ describe('translateSwitcher', () => {
     expect(element.html()).toContain('{{ currentLanguage }}');
     expect(element.html()).toContain("changeLanguage('pl')");
     expect(element.html()).toContain('cn');
+  });
+
+  it('changeLanguage should call $translate.use with proper params', () => {
+    let element = $compile("<translate-switcher></translate-switcher>")($rootScope);
+    $rootScope.$digest();
+
+    let isolateScope = element.isolateScope();    
+    isolateScope.changeLanguage(fakeData.lang);
+
+    expect(mocks.$translate.use).toHaveBeenCalledWith(fakeData.lang);
   });
 
 });

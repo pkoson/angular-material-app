@@ -17,6 +17,6 @@ export default class LoginFormCtrl {
   }
 
   handleError(response) {
-    console.log("error", resp);
+    console.log("error", response);
   }
 }
