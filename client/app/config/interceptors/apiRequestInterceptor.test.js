@@ -32,7 +32,7 @@ describe('apiRequestInterceptor', () => {
     let config = angular.copy(fakedData.config);
     let request = interceptor.request(config);
 
-    expect(request.url).toEqual('http://api.lvh.me:3000/v1' + fakedData.config.url);
+    expect(request.url).toEqual('http://lvh.me:3000/api/v1' + fakedData.config.url);
   });
 
 });
