@@ -1,3 +1,3 @@
-pl: 
-  welcome: "Dzień dobry"
-  bye: "Narazie!"
+pl:
+  FOO: "Dzień dobry"
+  BAR: "Narazie!"
