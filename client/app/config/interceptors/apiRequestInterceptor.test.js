@@ -16,14 +16,14 @@ describe('apiRequestInterceptor', () => {
         .config(function($httpProvider) {
           $httpProvider.interceptors.push('apiRequestInterceptor');
         });
-    
+
     angular.mock.module('mock.app.config', (_$httpProvider_) => {
       $httpProvider = _$httpProvider_;
     });
-  
+
     window.inject((_apiRequestInterceptor_) => {
       interceptor = _apiRequestInterceptor_;
-    }); 
+    });
   });
 
 

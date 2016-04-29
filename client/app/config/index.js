@@ -4,6 +4,7 @@ import routingConfig from './routingConfig';
 import ngTheme from './ngTheme';
 
 import authConfig from './authConfig';
+import translateConfig from './translateConfig';
 
 import authResponseInterceptor from './interceptors/authResponseInterceptor';
 import apiRequestInterceptor from './interceptors/apiRequestInterceptor';
@@ -14,6 +15,7 @@ export default angular
     .config(routingConfig)
     .config(ngTheme)
     .config(authConfig)
+    .config(translateConfig)
     .service('authResponseInterceptor', authResponseInterceptor)
     .service('apiRequestInterceptor', apiRequestInterceptor)
     .config(function($httpProvider) {
@@ -21,4 +23,4 @@ export default angular
       $httpProvider.interceptors.push('apiRequestInterceptor');
     })
     .name;
-      
+
