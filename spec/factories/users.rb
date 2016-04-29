@@ -1,13 +1,14 @@
+# frozen_string_literal: true
 FactoryGirl.define do
   sequence :email do |n|
     "testing#{n}@email.test"
   end
 
   factory :user do
-    nickname                "TestingNickname"
+    nickname 'TestingNickname'
     email
-    password                "FakePassword123"
-    password_confirmation   "FakePassword123"
+    password                'FakePassword123'
+    password_confirmation   'FakePassword123'
 
     trait :non_member do
       role 0
@@ -30,5 +31,4 @@ FactoryGirl.define do
     factory :user_is_moderator,   traits: [:moderator]
     factory :user_is_admin,       traits: [:admin]
   end
-
 end

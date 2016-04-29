@@ -1,37 +1,33 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe 'Users', type: :request do
-  let(:user_admin_params) do
-    user = FactoryGirl.create(:user_is_admin)
-    { 'email': user.email, 'password': user.password }
-  end
+describe 'Api::V1:UsersController', type: :request do
+  let(:admin_user) { FactoryGirl.create(:user_is_admin) }
+  let(:admin_params) { { 'email': admin_user.email, 'password': admin_user.password } }
+  let(:normal_user) { FactoryGirl.create(:user_is_member) }
 
-  describe 'GET /api/v1/users #index' do
+  describe '#index' do
     context 'request is not authorized' do
       it 'should return status 401 unauthorized' do
         get '/api/v1/users', nil, 'CONTENT_TYPE': 'application/json'
-        json = JSON.parse(response.body)
-        expect(json).to include('errors')
+        expect(JSON.parse(response.body)).to include('errors')
         expect(response).to have_http_status(401)
       end
     end
 
     context 'request is authorized' do
       it 'should return status 200 and users list' do
-        post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
-
+        post '/api/v1/auth/sign_in', admin_params.to_json, 'CONTENT_TYPE': 'application/json'
         get '/api/v1/users', nil, request_headers(response)
-        json = JSON.parse(response.body)
-        expect(json.count).to be > 0
+        expect(JSON.parse(response.body)).not_to be_empty
         expect(response).to have_http_status(200)
       end
     end
   end
 
-  describe 'POST /api/v1/users #create' do
+  describe '#create' do
     before(:each) do
-      post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
+      post '/api/v1/auth/sign_in', admin_params.to_json, 'CONTENT_TYPE': 'application/json'
     end
 
     context 'if request can not create user' do
@@ -50,63 +46,51 @@ describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /api/v1/users/:id #show' do
+  describe '#show' do
     context 'if request contain user id' do
       it 'should return status 200' do
-        normal_user = FactoryGirl.create(:user_is_member)
-        post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
-
+        post '/api/v1/auth/sign_in', admin_params.to_json, 'CONTENT_TYPE': 'application/json'
         get "/api/v1/users/#{normal_user.id}", {}, request_headers(response)
-        json = JSON.parse(response.body)
-        expect(json.count).to be > 0
+        expect(JSON.parse(response.body)['nickname']).to eq(normal_user.nickname.to_s)
         expect(response).to have_http_status(200)
       end
     end
   end
 
-  describe 'PATCH /api/v1/users #update' do
+  describe '#update' do
     before(:each) do
-      post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
+      post '/api/v1/auth/sign_in', admin_params.to_json, 'CONTENT_TYPE': 'application/json'
     end
 
     context 'if request has correct parameters' do
+      let(:update_user) { { 'user': { 'role': '2' } } }
       it 'should return status 200 ok updated' do
         post '/api/v1/users', new_user_params.to_json, request_headers(response)
         json = JSON.parse(response.body)
-
-        update_user = { 'user': { 'role': '2' } }
         patch "/api/v1/users/#{json['id']}", update_user.to_json, request_headers(response)
-
-        json = JSON.parse(response.body)
-        expect(json['role']).to eq(2)
+        expect(JSON.parse(response.body)['role']).to eq(2)
         expect(response).to have_http_status(200)
       end
     end
 
     context 'if request has incorrect parameters' do
+      let(:update_user) { { 'user': { 'email': '', 'password': '1234' } } }
       it 'should return status 422 unprocessable entity' do
         post '/api/v1/users', new_user_params.to_json, request_headers(response)
-        json = JSON.parse(response.body)
-
-        update_user = { 'user': { 'email': '', 'password': '1234' } }
-        patch "/api/v1/users/#{json['id']}", update_user.to_json, request_headers(response)
-
+        patch "/api/v1/users/#{JSON.parse(response.body)['id']}", update_user.to_json, request_headers(response)
         expect(response).to have_http_status(422)
       end
     end
   end
 
-  describe 'DELETE /api/v1/users #destroy' do
+  describe '#destroy' do
     before(:each) do
-      post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
+      post '/api/v1/auth/sign_in', admin_params.to_json, 'CONTENT_TYPE': 'application/json'
     end
 
     context 'if request destroy user' do
       it 'should return status 204 no_content' do
-        post '/api/v1/users', new_user_params.to_json, request_headers(response)
-        json = JSON.parse(response.body)
-
-        delete "/api/v1/users/#{json['id']}", nil, request_headers(response)
+        delete "/api/v1/users/#{normal_user.id}", nil, request_headers(response)
         expect(response).to have_http_status(204)
       end
     end
@@ -126,9 +110,9 @@ describe 'Users', type: :request do
   def new_user_params
     {
       'user': {
-        'name': Faker::Name.name,
-        'nickname': Faker::Internet.user_name,
-        'email': Faker::Internet.email,
+        'name': 'Testing name',
+        'nickname': 'Testing nickname',
+        'email': 'testing@email.test',
         'role': '4',
         'password': 'password1234',
         'password_confirmation': 'password1234'
