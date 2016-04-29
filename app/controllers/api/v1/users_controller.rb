@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_api_v1_user!
   before_action :set_user, except: [:index, :create]
@@ -31,16 +32,16 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     @user.destroy
-     render json: nil, status: :ok
+    render json: nil, status: :ok
   end
 
-private
+  private
+
   def set_user
-    @user = User.find(params[:id])  
+    @user = User.find(params[:id])
   end
 
   def user_params
     params.require(:user).permit(:name, :nickname, :email, :role, :password, :password_confirmation)
   end
-
 end
