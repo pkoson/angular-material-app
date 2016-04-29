@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
+describe 'Users', type: :request do
+  let(:user_admin_params) do
+    user = FactoryGirl.create(:user_is_admin)
+    { 'email': user.email, 'password': user.password }
+  end
+
   describe 'GET /api/v1/users #index' do
-    context 'if request is not authorized' do
+    context 'request is not authorized' do
       it 'should return status 401 unauthorized' do
         get '/api/v1/users', nil, 'CONTENT_TYPE': 'application/json'
         json = JSON.parse(response.body)
@@ -12,11 +17,9 @@ RSpec.describe 'Users', type: :request do
       end
     end
 
-    context 'if request is authorized' do
+    context 'request is authorized' do
       it 'should return status 200 and users list' do
-        user = FactoryGirl.create(:user_is_admin)
-        params = { 'email': user.email, 'password': user.password }
-        post '/api/v1/auth/sign_in', params.to_json, 'CONTENT_TYPE': 'application/json'
+        post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
 
         get '/api/v1/users', nil, request_headers(response)
         json = JSON.parse(response.body)
@@ -28,9 +31,7 @@ RSpec.describe 'Users', type: :request do
 
   describe 'POST /api/v1/users #create' do
     before(:each) do
-      user = FactoryGirl.create(:user_is_admin)
-      params = { 'email': user.email, 'password': user.password }
-      post '/api/v1/auth/sign_in', params.to_json, 'CONTENT_TYPE': 'application/json'
+      post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
     end
 
     context 'if request can not create user' do
@@ -52,10 +53,8 @@ RSpec.describe 'Users', type: :request do
   describe 'GET /api/v1/users/:id #show' do
     context 'if request contain user id' do
       it 'should return status 200' do
-        user = FactoryGirl.create(:user_is_admin)
         normal_user = FactoryGirl.create(:user_is_member)
-        params = { 'email': user.email, 'password': user.password }
-        post '/api/v1/auth/sign_in', params.to_json, 'CONTENT_TYPE': 'application/json'
+        post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
 
         get "/api/v1/users/#{normal_user.id}", {}, request_headers(response)
         json = JSON.parse(response.body)
@@ -67,9 +66,7 @@ RSpec.describe 'Users', type: :request do
 
   describe 'PATCH /api/v1/users #update' do
     before(:each) do
-      user = FactoryGirl.create(:user_is_admin)
-      params = { 'email': user.email, 'password': user.password }
-      post '/api/v1/auth/sign_in', params.to_json, 'CONTENT_TYPE': 'application/json'
+      post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
     end
 
     context 'if request has correct parameters' do
@@ -101,9 +98,7 @@ RSpec.describe 'Users', type: :request do
 
   describe 'DELETE /api/v1/users #destroy' do
     before(:each) do
-      user = FactoryGirl.create(:user_is_admin)
-      params = { 'email': user.email, 'password': user.password }
-      post '/api/v1/auth/sign_in', params.to_json, 'CONTENT_TYPE': 'application/json'
+      post '/api/v1/auth/sign_in', user_admin_params.to_json, 'CONTENT_TYPE': 'application/json'
     end
 
     context 'if request destroy user' do

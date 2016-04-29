@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Devise', type: :request do
+describe 'Devise', type: :request do
   describe 'GET /api/v1/auth/sign_in' do
     context 'if request has wrong method' do
       it 'should return status 405' do
