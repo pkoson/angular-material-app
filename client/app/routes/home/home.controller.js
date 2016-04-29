@@ -7,7 +7,7 @@ export default class HomeController {
 
   getUsers(){
     this.$http
-      .get('http://api.lvh.me:3000/v1/users')
-      .then(response => this.users = response.data)
+      .get('/users')
+      .then(response => this.users = response.data);
   }
 }
