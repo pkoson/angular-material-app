@@ -3,12 +3,11 @@ import uirouter from 'angular-ui-router';
 import 'angular-cookie';
 import ngtokenauth from './lib/ng-token-auth.min.js';
 
-import routing from './routing';
-import config from './config/main';
-import ngTheme from './config/ngTheme';
-
 import components from './components';
 import services from './services';
+
+import routes from './routes';
+import config from './config';
 
 import home from './routes/home/';
 
@@ -20,15 +19,19 @@ import angularMaterial from 'angular-material';
 
 const ngModule = angular
       .module('app', [
+        // External modules
         uirouter,
         ngtokenauth,
         angularMaterial,
         angularAnimate,
+
+        // Configs
+        config,
+        routes,
+
+        // Internal modules
         services,
         components,
         home
-      ])
-      .config(config)
-      .config(routing)
-      .config(ngTheme)
+      ]);
       
