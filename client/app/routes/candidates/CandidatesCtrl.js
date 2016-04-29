@@ -1,16 +1,24 @@
 export default class CandidatesCtrl {
-  constructor($http, $location, appConfig) {
-    this.$http = $http;
-    this.appConfig = appConfig;
-    this.getCandidates();
+  constructor($http, $location, appConfig, $scope) {
+    var vm = this;
+    vm.$http = $http;
+    vm.appConfig = appConfig;
+    vm.$scope = $scope;
+    vm.$scope.query = {
+      order: vm.appConfig.orderBy,
+      limit: vm.appConfig.pageLimit,
+      page: 1,
+      selected: []
+    };
+    vm.getCandidates(vm);
   }
 
-  getCandidates(){
-    this.$http
-      .get(this.appConfig.apiUrl+'/users')
+  getCandidates(vm){
+    vm.$http
+      .get(vm.appConfig.apiUrl+'/users')
       .then((response) => {
-        this.candidates = response.data;
-        return  this.candidates;
+        vm.candidates = response.data;
+        return  vm.candidates;
       });
   }
 }
