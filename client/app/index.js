@@ -17,8 +17,6 @@ import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
 
-console.log(config)
-
 const ngModule = angular
       .module('app', [
         // External modules

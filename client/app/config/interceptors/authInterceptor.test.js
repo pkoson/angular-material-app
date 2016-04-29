@@ -1,1 +1,0 @@
-import authInterceptor from './authInterceptor';
