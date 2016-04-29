@@ -1,7 +1,11 @@
 FactoryGirl.define do
+  sequence :email do |n|
+    "testing#{n}@email.test"
+  end
+
   factory :user do
-    nickname                { Faker::Name.name }
-    email                   { Faker::Internet.email }
+    nickname                "TestingNickname"
+    email
     password                "FakePassword123"
     password_confirmation   "FakePassword123"
 
