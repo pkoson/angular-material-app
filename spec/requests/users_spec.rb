@@ -107,12 +107,12 @@ RSpec.describe 'Users', type: :request do
     end
 
     context 'if request destroy user' do
-      it 'should return status 200 ok' do
+      it 'should return status 204 no_content' do
         post '/api/v1/users', new_user_params.to_json, request_headers(response)
         json = JSON.parse(response.body)
 
         delete "/api/v1/users/#{json['id']}", nil, request_headers(response)
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(204)
       end
     end
   end

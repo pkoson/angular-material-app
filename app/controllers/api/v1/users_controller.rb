@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_api_v1_user!
-  before_action :set_user, except: [:index, :create]
+  before_action :set_user, only: [:show, :update, :destroy]
 
   def index
     users = User.all
@@ -23,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       render json: @user, status: :ok
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -32,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    render json: nil, status: :ok
+    render json: nil, status: :no_content
   end
 
   private
