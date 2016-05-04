@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.6'
@@ -6,13 +7,13 @@ gem 'pg'
 gem 'puma' # Use puma as the app server
 gem 'figaro' # Configuration values often include sensitive information.
 gem 'active_model_serializers'
-gem 'devise' 
-gem 'devise_token_auth' 
+gem 'devise'
+gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'cancancan', '~> 1.10'
 # gem 'rollbar', '~> 2.8.1'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development do
   gem 'pry'
@@ -28,6 +29,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
+  gem 'rubocop'
 end
 
 # gem 'jbuilder' # To use Jbuilder templates for JSON
