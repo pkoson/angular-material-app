@@ -1,8 +1,106 @@
-<md-dialog>
+<md-dialog class="add-new-user">
   <md-toolbar>
-    <h2>Test</h2>
+    <div class="md-toolbar-tools">
+      <h2>Dodaj nowego kandydata</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-icon="close" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
   </md-toolbar>
   <md-dialog-content>
-    <span>Test test test etstes</span>
+    <div class="md-dialog-content">
+      <form name=addNewUser>
+        <section>
+          <div>
+            <span class="md-subhead">Dane osobowe</span>
+            <div layout="row" layout-align="end center" flex>
+              <md-button md-no-ink class="md-primary">Dodaj zdjęcie</md-button>
+            </div>
+          </div>
+          <div layout="column" layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Imię</label>
+              <input ng-model="user.firstName" type="text">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Nazwisko</label>
+              <input ng-model="user.lastName" type="text">
+            </md-input-container>
+          </div>
+          <div layout="column" layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Miasto</label>
+              <input ng-model="user.city" type="text">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Telefon</label>
+              <input ng-model="user.phone">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Email</label>
+              <input ng-model="user.mail" type="email">
+            </md-input-container>
+          </div>
+          <div layout="column" layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Facebook</label>
+              <input ng-model="user.facebook" type="url">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>LinkedIN</label>
+              <input ng-model="user.linkedin" type="url">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Goldenline</label>
+              <input ng-model="user.goldenline" type="url">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Github</label>
+              <input ng-model="user.github" type="url">
+            </md-input-container>
+          </div>
+          <md-chips ng-model="AddNewCtrl.languages">
+            <input type="text" placeholder="Języki">
+          </md-chips>
+        </section>
+        <section>
+          <span class="md-subhead">Doświadczenie</span>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Doświdczenie łączne</label>
+            <input name="expirienceSum" ng-model="user.expirienceSum" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" type="number" step="0.01">
+            <div ng-messages="addNewUser.expirienceSum.$error" role="alert">
+              <div ng-message-exp="['pattern', 'type']">Wymagany format x,xx</div>
+            </div>
+          </md-input-container>
+          <div layout="column" layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Technologia #1</label>
+              <input ng-model="user.firstTech">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Doświadczenie technologia #1</label>
+              <input name="firstTechExp" ng-model="user.firstTechExp" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" type="number" step="0.01">
+              <div ng-messages="addNewUser.firstTechExp.$error" role="alert">
+                <div ng-message-exp="['pattern', 'type']">Wymagany format x,xx</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout="column" layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Technologia #2</label>
+              <input ng-model="user.secondTech">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Doświadczenie technologia #2</label>
+              <input name="secondTechExp" ng-model="user.secondTechExp" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" type="number" step="0.01">
+              <div ng-messages="addNewUser.secondTechExp.$error" role="alert">
+                <div ng-message-exp="['pattern', 'type']">Wymagany format x,xx</div>
+              </div>
+            </md-input-container>
+          </div>
+        </section>
+      </form>
+    </div>
   </md-dialog-content>
 </md-dialog>

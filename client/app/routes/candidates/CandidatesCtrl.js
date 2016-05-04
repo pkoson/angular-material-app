@@ -30,9 +30,10 @@ export default class CandidatesCtrl {
           useFullScreen = (vm.$mdMedia('sm') || vm.$mdMedia('xs'))  && vm.$scope.customFullscreen;
       vm.$mdDialog.show({
         controller: 'AddNewCtrl',
+        controllerAs: 'AddNewCtrl',
         template: require('./addNew/addNewUser.html'),
         parent: angular.element(document.body),
-        targetEvent: vm.ev,
+        targetEvent: ev,
         clickOutsideToClose:true,
         fullscreen: vm.useFullScreen
       });
