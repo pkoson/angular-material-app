@@ -1,6 +1,6 @@
 export default class CandidatesCtrl {
-  constructor($http, $location, appConfig, $scope) {
-    var vm = this;
+  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia) {
+    let vm = this;
     vm.$http = $http;
     vm.appConfig = appConfig;
     vm.$scope = $scope;
@@ -10,6 +10,9 @@ export default class CandidatesCtrl {
       page: 1,
       selected: []
     };
+    vm.$mdMedia = $mdMedia;
+    vm.$mdDialog = $mdDialog;
+    vm.$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
     vm.getCandidates(vm);
   }
 
@@ -21,4 +24,17 @@ export default class CandidatesCtrl {
         return  vm.candidates;
       });
   }
+
+  addNewUser(ev) {
+      let vm = this,
+          useFullScreen = (vm.$mdMedia('sm') || vm.$mdMedia('xs'))  && vm.$scope.customFullscreen;
+      vm.$mdDialog.show({
+        controller: 'AddNewCtrl',
+        template: require('./addNew/addNewUser.html'),
+        parent: angular.element(document.body),
+        targetEvent: vm.ev,
+        clickOutsideToClose:true,
+        fullscreen: vm.useFullScreen
+      });
+    }
 }
