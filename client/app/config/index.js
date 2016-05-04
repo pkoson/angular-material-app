@@ -17,6 +17,7 @@ export default angular
     .service('authResponseInterceptor', authResponseInterceptor)
     .service('apiRequestInterceptor', apiRequestInterceptor)
     .config(function($httpProvider) {
+      "ngInject";
       $httpProvider.interceptors.push('authResponseInterceptor');
       $httpProvider.interceptors.push('apiRequestInterceptor');
     })
