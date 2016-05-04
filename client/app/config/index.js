@@ -8,6 +8,7 @@ import translateConfig from './translateConfig';
 
 import authResponseInterceptor from './interceptors/authResponseInterceptor';
 import apiRequestInterceptor from './interceptors/apiRequestInterceptor';
+import translateRequestInterceptor from './interceptors/translateRequestInterceptor'
 
 
 export default angular
@@ -18,9 +19,11 @@ export default angular
     .config(translateConfig)
     .service('authResponseInterceptor', authResponseInterceptor)
     .service('apiRequestInterceptor', apiRequestInterceptor)
+    .service('translateRequestInterceptor', translateRequestInterceptor)
     .config(function($httpProvider) {
       $httpProvider.interceptors.push('authResponseInterceptor');
       $httpProvider.interceptors.push('apiRequestInterceptor');
+      $httpProvider.interceptors.push('translateRequestInterceptor');
     })
     .name;
 
