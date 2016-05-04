@@ -4,7 +4,6 @@ import 'angular-cookie';
 import ngtokenauth from './lib/ng-token-auth.min.js';
 
 import components from './components';
-import services from './services';
 
 import routes from './routes';
 import config from './config';
@@ -15,7 +14,6 @@ import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
 import 'angular-material/angular-material.css';
-
 
 const ngModule = angular
       .module('app', [
@@ -30,7 +28,6 @@ const ngModule = angular
         routes,
 
         // Internal modules
-        services,
         components,
         home
       ]);
