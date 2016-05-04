@@ -1,5 +1,6 @@
 export default class HomeController {
   constructor($http) {
+    "ngInject";
     this.$http = $http;
     this.getUsers();
   }

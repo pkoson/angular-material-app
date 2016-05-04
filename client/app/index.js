@@ -11,10 +11,10 @@ import config from './config';
 
 import home from './routes/home/';
 
-import 'angular-material/angular-material.css';
-
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
+
+import 'angular-material/angular-material.css';
 
 
 const ngModule = angular

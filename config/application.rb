@@ -16,7 +16,7 @@ require 'action_view/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module AkraPeople2
+module SportMatrix
   # Sportmatrix Application
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

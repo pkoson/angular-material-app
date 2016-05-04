@@ -1,8 +1,8 @@
 var figlet = require('figlet');
  
 console.log('\n'); 
-figlet.text('     SportMatrix     ', {
-    font: 'nancyj-underlined',
+figlet.text('SportMatrix', {
+    font: 'doom',
     horizontalLayout: 'default',
     verticalLayout: 'default'
 }, function(err, data) {
