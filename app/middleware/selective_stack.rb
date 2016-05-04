@@ -1,17 +1,19 @@
+# frozen_string_literal: true
 class SelectiveStack
   def initialize(app)
     @app = app
   end
 
   def call(env)
-    if env["PATH_INFO"].start_with?("/api/") # <--- Change URL path here
+    if env['PATH_INFO'].start_with?('/api/') # <--- Change URL path here
       @app.call(env)
     else
       middleware_stack.build(@app).call(env)
     end
   end
 
-private
+  private
+
   def middleware_stack
     @middleware_stack ||= begin
       ActionDispatch::MiddlewareStack.new.tap do |middleware|

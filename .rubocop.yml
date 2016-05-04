@@ -1,0 +1,15 @@
+Metrics/LineLength:
+  Max: 120
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Excludes:
+    - 'client/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
