@@ -22,6 +22,7 @@ import 'angular-material/angular-material.css';
 
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
+import ngMessages from 'angular-messages';
 
 const ngModule = angular
       .module('app', [
@@ -34,9 +35,10 @@ const ngModule = angular
         home,
         users,
         user,
-        candidates
+        candidates,
+        ngMessages
       ])
       .constant('appConfig', constants)
       .config(config)
       .config(routing)
-      .config(ngTheme)
+      .config(ngTheme);

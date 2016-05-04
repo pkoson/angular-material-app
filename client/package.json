@@ -57,7 +57,7 @@
     "angular-cookie": "^4.1.0",
     "angular-material": "^1.0.7",
     "angular-material-data-table": "^0.10.9",
-    "angular-messages": "^1.5.3",
+    "angular-messages": "^1.5.5",
     "ng-token-auth": "0.0.29-beta1"
   }
 }
