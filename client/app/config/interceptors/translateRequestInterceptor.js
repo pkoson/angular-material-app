@@ -10,7 +10,7 @@ export default function translateRequestInterceptor ($cookies) {
       config.headers['LanguageInCookie'] = languageInCookie;
 
       /*Only for test*/
-      config.headers['LanguageInProfile'] = 'en';
+      config.headers['HTTP_USER_LANGUAGE'] = 'en';
 
       return config;
     }
