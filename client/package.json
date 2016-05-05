@@ -33,6 +33,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "figlet": "^1.1.1",
     "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.16.0",
     "isparta-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.4.1",
