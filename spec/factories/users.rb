@@ -9,6 +9,7 @@ FactoryGirl.define do
     email
     password                'FakePassword123'
     password_confirmation   'FakePassword123'
+    language                'en'
 
     trait :non_member do
       role 0
