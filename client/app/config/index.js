@@ -23,6 +23,7 @@ export default angular
     .service('translateRequestInterceptor', translateRequestInterceptor)
     .service('translateResponseInterceptor', translateResponseInterceptor)
     .config(function($httpProvider) {
+      "ngInject";
       $httpProvider.interceptors.push('authResponseInterceptor');
       $httpProvider.interceptors.push('apiRequestInterceptor');
       $httpProvider.interceptors.push('translateRequestInterceptor');

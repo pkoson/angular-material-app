@@ -1,5 +1,6 @@
 export default class LoginFormCtrl {
   constructor($auth, $state) {
+    "ngInject";
     this.$state = $state;
     this.$auth = $auth;
     this.loginForm = {};

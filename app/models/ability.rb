@@ -1,12 +1,11 @@
+# frozen_string_literal: true
 class Ability
   include CanCan::Ability
 
   def initialize(user)
     can :index, User
 
-    if user.admin?
-      can :manage, :all
-    end
+    can :manage, :all if user.admin?
 
     # Define abilities for the passed in user here. For example:
     #
