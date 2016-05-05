@@ -4,9 +4,9 @@ export default function routes($stateProvider) {
 
     .state('login', {
       url: '/login',
-      template: require('./components/loginForm/loginForm.html'),
-      controller: 'LoginFormCtrl',
-      controllerAs: 'LoginFormCtrl'
+      template: require('./routes/login/login.html'),
+      controller: 'LoginCtrl',
+      controllerAs: 'LoginCtrl'
     })
 
     .state('home', {

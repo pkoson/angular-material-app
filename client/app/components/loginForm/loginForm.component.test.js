@@ -1,10 +1,10 @@
-import LoginFormCtrl  from './LoginFormCtrl';
+import loginForm  from './loginForm.component';
 
-describe('Components/loginForm/LoginFormCtrl', () => {
+describe('Components/loginForm', () => {
   // Define all variables for inject
   let fakedData = {};
   let mocks = {};   
-  let $controller, $q, $rootScope; 
+  let $componentController, $q, $controller, $rootScope, $compile, element; 
 
   // Pupulate faked data
   fakedData.loginForm = {name: 'Bartek'};
@@ -22,9 +22,9 @@ describe('Components/loginForm/LoginFormCtrl', () => {
 
   beforeEach(() => { // all this functions will be evaluate before each tests
     angular
-      .module('mock.app.login', []) // create new angular fake module
-      .controller('LoginFormCtrl', LoginFormCtrl); // add our controller to this module
-    angular.mock.module('mock.app.login'); // create mock for new created fake module
+      .module('mock.app.components.loginForm', []) // create new angular fake module
+      .component('loginForm', loginForm); // add our controller to this module
+    angular.mock.module('mock.app.components.loginForm'); // create mock for new created fake module
 
     window.module($provide => { // window.module comes from angular-mock lib
       $provide.value('$auth', mocks.$auth); // mock $auth service as a empty object
@@ -32,15 +32,27 @@ describe('Components/loginForm/LoginFormCtrl', () => {
     });
 
     // inject our previously declared variable to module, just do like that, do not try to undarstand 
-    window.inject((_$controller_, _$q_, _$rootScope_) => {
+    window.inject((_$q_, _$componentController_, _$rootScope_, _$compile_) => {
       $q = _$q_;
+      $componentController = _$componentController_;
       $rootScope = _$rootScope_;
-      $controller = _$controller_('LoginFormCtrl');
+      $compile = _$compile_;
     });
+
+   
+
   });
 
+  it('should contain form with ng-submit', () => {
+    element = $compile('<login-form></login-form>')($rootScope);
+    $rootScope.$digest();
+
+    expect(element.html()).toContain('ng-submit="$ctrl.login($ctrl.loginForm)"');
+  });
 
   it('define loginForm as empty object', () => {
+    $controller = $componentController('loginForm', null);
+    
     expect($controller.loginForm).toEqual({});
   });
 

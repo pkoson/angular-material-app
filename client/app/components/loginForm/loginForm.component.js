@@ -1,4 +1,4 @@
-export default class LoginFormCtrl {
+class LoginFormCtrl {
   constructor($auth, $state) {
     "ngInject";
     this.$state = $state;
@@ -18,6 +18,13 @@ export default class LoginFormCtrl {
   }
 
   handleError(response) {
-    console.log("error", resp);
+    console.log("error", response);
   }
 }
+
+let loginForm = {
+  template: require('./loginForm.html'),
+  controller: LoginFormCtrl,
+};
+
+export default loginForm;

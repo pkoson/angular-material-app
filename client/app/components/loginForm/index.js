@@ -1,9 +1,9 @@
 import angular from 'angular';
-import uirouter from 'angular-ui-router';
 import ngtokenauth from '../../lib/ng-token-auth.min.js';
+import uirouter from 'angular-ui-router';
 
-import LoginFormCtrl from './LoginFormCtrl';
+import loginForm from './loginForm.directive.js';
 
-export default angular.module('app.login', [uirouter, ngtokenauth])
-  .controller('LoginFormCtrl', LoginFormCtrl)
+export default angular.module('app.components.loginForm', [uirouter, ngtokenauth])
+  .component('loginForm', loginForm)
   .name;

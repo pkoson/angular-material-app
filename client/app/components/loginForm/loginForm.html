@@ -1,29 +1,19 @@
-<div layout="row" layout-align="center center" layout-margin>
-  
-  <div class="md-whiteframe-z2">
-    
-    <md-toolbar>
-      <h2 class="md-toolbar-tools"><span>Login</span></h2>
-    </md-toolbar>
-    
-    <form layout="column" layout-padding name="userForm" ng-submit="LoginFormCtrl.login(LoginFormCtrl.loginForm)">
-      <md-input-container>
-        <label>Email</label>
-        <input name="email" type="email" ng-model="LoginFormCtrl.loginForm.email" required/>
-        <div ng-messages="userForm.email.$error">
-          <div ng-message="required">This is required!</div>
-        </div>
-      </md-input-container>
-      <md-input-container>
-        <label>Password</label>
-        <input name="password" type="password" ng-model="LoginFormCtrl.loginForm.password"/>
-      </md-input-container>
-      <div layout="row" layout-align="center center">
-        <md-button type="submit" class="md-raised md-primary">Login</md-button>
-        <div flex="flex"></div>
-        <md-button href="" md-no-ink="md-no-ink">Forgot Password</md-button>
-      </div>
-    </form>
 
-  </div>
-</div>
+<form style="width:400px" layout="column" layout-padding name="userForm" ng-submit="$ctrl.login($ctrl.loginForm)">
+
+  <md-input-container>
+    <label>Email</label>
+    <input name="email" type="email" ng-model="$ctrl.loginForm.email" autofocus required/>
+    <div ng-messages="userForm.email.$error">
+      <div ng-message="required">This is required!</div>
+    </div>
+  </md-input-container>
+
+  <md-input-container>
+    <label>Password</label>
+    <input name="password" type="password" ng-model="$ctrl.loginForm.password"/>
+  </md-input-container>
+
+  <md-button type="submit" class="md-raised md-primary">Login</md-button>
+
+</form>
