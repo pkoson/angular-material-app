@@ -1,7 +1,7 @@
 export default function translateRequestInterceptor ($cookies) {
-  "ngInclude";
+  "ngInject";
   let languageInCookie = {};
-  if($cookies.get('NG_TRANSLATE_LANG_KEY')) {
+  if($cookies.get('LanguageInProfile')) {
     languageInCookie = $cookies.get('NG_TRANSLATE_LANG_KEY').replace(/"/g, "");
   }
 
@@ -10,7 +10,7 @@ export default function translateRequestInterceptor ($cookies) {
       config.headers['LanguageInCookie'] = languageInCookie;
 
       /*Only for test*/
-      config.headers['HTTP_USER_LANGUAGE'] = 'en';
+      config.headers['LanguageInProfile'] = 'en';
 
       return config;
     }
