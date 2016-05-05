@@ -1,8 +1,12 @@
+<md-content flex>
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" flex>
+      <add-New-User-Directive flex></add-New-User-Directive>
+  </md-sidenav>
 <div class="right-content">
   <md-content layout="column" ms-scroll flex md-whiteframe="2" class="content">
     <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
-        <md-button class="md-fab md-mini" ng-click="CandidatesCtrl.addNewUser($event)">
+        <md-button class="md-fab md-mini" ng-click="CandidatesCtrl.addNewUser('right')">
           <md-icon md-svg-icon="plus"></md-icon>
         </md-button>
         <span>Baza kandydatów</span>
@@ -29,6 +33,7 @@
             <th md-column>Dośw. tech. #2</th>
             <th md-column>Języki</th>
             <th md-column>Wyjazd krótki</th>
+            <th md-column>Akcje</th>
           </tr>
         </thead>
         <tbody md-body>
@@ -43,6 +48,7 @@
             <td md-cell>{{candidate.name}}</td>
             <td md-cell>{{candidate.name}}</td>
             <td md-cell>{{candidate.name}}</td>
+            <td md-cell>edit</td>
           </tr>
         </tbody>
       </table>
@@ -50,3 +56,4 @@
     <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{CandidatesCtrl.candidates.length}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
   </md-content>
 </div>
+</md-content>

@@ -1,5 +1,5 @@
 export default class CandidatesCtrl {
-  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia) {
+  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia, $mdSidenav) {
     let vm = this;
     vm.$http = $http;
     vm.appConfig = appConfig;
@@ -12,6 +12,7 @@ export default class CandidatesCtrl {
     };
     vm.$mdMedia = $mdMedia;
     vm.$mdDialog = $mdDialog;
+    vm.$mdSidenav = $mdSidenav;
     vm.$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
     vm.getCandidates(vm);
   }
@@ -25,17 +26,9 @@ export default class CandidatesCtrl {
       });
   }
 
-  addNewUser(ev) {
-      let vm = this,
-          useFullScreen = (vm.$mdMedia('sm') || vm.$mdMedia('xs'))  && vm.$scope.customFullscreen;
-      vm.$mdDialog.show({
-        controller: 'AddNewCtrl',
-        controllerAs: 'AddNewCtrl',
-        template: require('./addNew/addNewUser.html'),
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:false,
-        fullscreen: vm.useFullScreen
-      });
+  addNewUser(navID) {
+        console.log("navID", navID);
+        this.$mdSidenav(navID)
+          .toggle();
     }
 }
