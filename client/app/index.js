@@ -10,6 +10,7 @@ import routes from './routes';
 import config from './config';
 
 import home from './routes/home/';
+import login from './routes/login';
 
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
@@ -32,6 +33,7 @@ const ngModule = angular
         // Internal modules
         services,
         components,
-        home
+        home,
+        login
       ]);
       
