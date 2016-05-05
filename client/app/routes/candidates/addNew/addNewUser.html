@@ -12,7 +12,7 @@
     <div class="md-dialog-content">
       <form name=addNewUser>
         <section>
-          <div>
+          <div layout="row">
             <span class="md-subhead">Dane osobowe</span>
             <div layout="row" layout-align="end center" flex>
               <md-button md-no-ink class="md-primary">Dodaj zdjęcie</md-button>
@@ -97,6 +97,62 @@
               <div ng-messages="addNewUser.secondTechExp.$error" role="alert">
                 <div ng-message-exp="['pattern', 'type']">Wymagany format x,xx</div>
               </div>
+            </md-input-container>
+          </div>
+        </section>
+        <section>
+          <span class="md-subhead">Finanse</span>
+          <div layout="column" layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Wynagrodzenie</label>
+              <input name="salary" ng-model="user.salary"  type="number" step="1">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Waluta</label>
+              <md-select ng-model="user.currency">
+                <md-option ng-repeat="currency in AddNewCtrl.currencies" value="{{currency}}">
+                  {{currency}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Typ umowy</label>
+              <md-select ng-model="user.contract">
+                <md-option ng-repeat="contract in AddNewCtrl.contract" value="{{contract}}">
+                  {{contract}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </section>
+        <section>
+          <span class="md-subhead">Inne</span>
+          <div layout="column" layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Status</label>
+              <input ng-model="user.status">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Wynik rozmowy rek.</label>
+              <input ng-model="user.points">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Firma polecająca</label>
+              <input ng-model="user.recomendation">
+            </md-input-container>
+          </div>
+          <div layout="column" layout-gt-xs="row">
+            <div layout="column">
+              <md-input-container>
+                <md-switch ng-model="ShortDelegation">Wyjazdy krótkie: <strong>{{ ShortDelegation ? "Tak" : "Nie"}}</strong></md-switch>
+                <md-switch ng-model="LongDelegation">Wyjazdy długie: <strong>{{ LongDelegation ? "Tak" : "Nie"}}</strong></md-switch>
+              </md-input-container>
+              <md-datepicker ng-model="user.submissionDate" md-placeholder="Data kontaktu" class="md-block" flex-gt-sm>
+              </md-datepicker>
+            </div>
+            <md-input-container class="md-block" flex>
+              <label>Notatki</label>
+              <textarea ng-model="user.notes" md-maxlength="150" rows="5" md-select-on-focus></textarea>
             </md-input-container>
           </div>
         </section>

@@ -34,7 +34,7 @@ export default class CandidatesCtrl {
         template: require('./addNew/addNewUser.html'),
         parent: angular.element(document.body),
         targetEvent: ev,
-        clickOutsideToClose:true,
+        clickOutsideToClose:false,
         fullscreen: vm.useFullScreen
       });
     }
