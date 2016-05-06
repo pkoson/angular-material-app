@@ -26,8 +26,22 @@
             <th md-column md-order-by="name"><span>Nazwisko</span></th>
             <th md-column><span>Imię</span></th>
             <th md-column>Miasto</th>
-            <th md-column>Dośw. łączne</th>
-            <th md-column>Tech. #1</th>
+            <th md-column>
+              <span>
+                Dośw. łączne
+                <md-tooltip md-direction="top">
+                  Doświadczenie łączne
+                </md-tooltip>
+              </span>
+            </th>
+            <th md-column>
+              <span>
+                Tech. #1
+                <md-tooltip md-direction="top">
+                  Technologia nr. 1
+                </md-tooltip>
+              </span>
+            </th>
             <th md-column>Dośw. tech. #1</th>
             <th md-column>Tech. #2</th>
             <th md-column>Dośw. tech. #2</th>
@@ -48,7 +62,12 @@
             <td md-cell>{{candidate.name}}</td>
             <td md-cell>{{candidate.name}}</td>
             <td md-cell>{{candidate.name}}</td>
-            <td md-cell>edit</td>
+            <td md-cell>
+              <div layout="row">
+                <md-button ng-click="null" class="md-icon-button"><md-icon md-svg-icon="pencil" class="md-accent"></md-icon></md-button>
+                <md-button ng-click="null" class="md-icon-button"><md-icon md-svg-icon="delete" class="md-accent"></md-icon></md-button>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
