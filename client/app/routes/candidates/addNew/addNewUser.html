@@ -7,8 +7,15 @@
         </md-datepicker>
       </div>
       <div layout="row">
-        <div layout="row" flex="30" layout-align="center center">
-            <md-button md-no-ink class="md-primary">Dodaj zdjęcie</md-button>
+        <div layout="column" flex="30" layout-align="center center">
+          <md-button  ngf-select="uploadFiles($file, $invalidFiles)"
+          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB" md-no-ink class="md-primary" ng-hide="AddNewCtrl.imageStatus">Dodaj zdjęcie</md-button>
+          <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+              <span class="progress" ng-show="f.progress >= 0">
+                  <div style="width:{{f.progress}}%"
+                       ng-bind="f.progress + '%'"></div>
+              </span>
+          </div>
         </div>
         <div flex="70">
           <md-input-container class="md-block" flex-gt-sm>

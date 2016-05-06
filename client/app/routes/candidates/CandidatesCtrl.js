@@ -27,7 +27,6 @@ export default class CandidatesCtrl {
   }
 
   addNewUser(navID) {
-        console.log("navID", navID);
         this.$mdSidenav(navID)
           .toggle();
     }
