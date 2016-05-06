@@ -1,16 +1,13 @@
-export default function translateRequestInterceptor ($cookies) {
+export default function translateRequestInterceptor ($translate) {
   "ngInject";
-  let languageInCookie = {};
-  if($cookies.get('LanguageInProfile')) {
-    languageInCookie = $cookies.get('NG_TRANSLATE_LANG_KEY').replace(/"/g, "");
-  }
+  let userLanguage = {};
+  let browserLanguage = window.navigator.userLanguage || window.navigator.language;
+  let storageLanguage = $translate.storage().get($translate.storageKey());
+  userLanguage = storageLanguage || browserLanguage;
 
   return {
     request(config) {
-      config.headers['LanguageInCookie'] = languageInCookie;
-
-      /*Only for test*/
-      config.headers['LanguageInProfile'] = 'en';
+      config.headers['User-Language'] = userLanguage;
 
       return config;
     }

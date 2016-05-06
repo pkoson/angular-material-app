@@ -2,12 +2,10 @@ export default function translateResponseInterceptor($translate) {
   "ngInject";
   return {
     response (response) {
-      /*check user language in profile*/
-      if (response.config.headers.LanguageInProfile) {
-        /*set language */
-        $translate.use(response.config.headers.LanguageInProfile);
-      }
-       return response;
+      let userLanguage = response.headers('User-Language');
+
+      userLanguage && $translate.use(userLanguage);
+      return response;
     }
   };
 }
