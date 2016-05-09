@@ -3,8 +3,8 @@ export default function translateResponseInterceptor($translate) {
   return {
     response (response) {
       let userLanguage = response.headers('User-Language');
-
       userLanguage && $translate.use(userLanguage);
+
       return response;
     }
   };

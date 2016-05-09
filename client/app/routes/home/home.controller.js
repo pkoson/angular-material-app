@@ -1,5 +1,5 @@
 export default class HomeController {
-  constructor($http,$translate) {
+  constructor($http, $translate) {
     "ngInject";
     this.$http = $http;
     this.$translate = $translate;
