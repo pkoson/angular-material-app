@@ -1,10 +1,10 @@
-<md-sidenav id="vertical-navigation" flex md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" class="md-sidenav-left md-whiteframe-8dp" md-theme="default">
+<md-sidenav id="leftsidebar" flex md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" class="md-sidenav-left md-whiteframe-8dp" md-theme="default">
   <side-nav flex></side-Nav>
 </md-sidenav>
-<div class="content" flex layout="column">
+<div flex layout="column">
   <main-navbar>
   </main-navbar>
-  <md-content layout-fill flex>
+  <md-content id="content" layout-fill flex>
     <div ui-view layout="row">
     </div>
   </md-content>

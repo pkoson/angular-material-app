@@ -1,9 +1,9 @@
 <md-content flex>
-  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" flex>
+  <md-sidenav id="rightsidebar" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" flex>
       <add-New-User-Directive flex></add-New-User-Directive>
   </md-sidenav>
-<div class="right-content">
-  <md-content layout="column" ms-scroll flex md-whiteframe="2" class="content">
+<div class="candidates md-whiteframe-1dp">
+  <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background">
     <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
         <md-button aria-label="add new user" class="md-fab md-mini" ng-click="CandidatesCtrl.addNewUser('right')">
