@@ -9,6 +9,6 @@ export default class HomeController {
   getUsers(){
     this.$http
       .get('/users')
-      .then(response => this.users = response.data)
+      .then(response => this.users = response.data);
   }
 }
