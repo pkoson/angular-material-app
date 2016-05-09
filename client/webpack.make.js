@@ -87,7 +87,7 @@ module.exports = function makeWebpackConfig (options) {
   if (TEST) {
     config.devtool = 'inline-source-map';
   } else if (BUILD) {
-    config.devtool = 'source-map';
+    
   } else {
     config.devtool = 'eval';
   }
@@ -106,13 +106,11 @@ module.exports = function makeWebpackConfig (options) {
     preLoaders: [],
     loaders: [
         { test: /\.js$/, loader: 'ng-annotate!babel', exclude: /node_modules/ },
-        { test: /\.html$/, loader: 'raw-loader', exclude: /node_modules/ },
-        { test: /\.jpg$/, loader: 'file-loader' },
-        
-        {
-          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-          loader: "url?limit=10000&mimetype=image/svg+xml?limit=1024&name=image/[name].[ext]"
-        }
+        { test: /\.html$/, loader: 'html-loader', exclude: /node_modules/ },
+        { 
+          test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, 
+          loader: 'url-loader?limit=10000&name=[hash]-[name].[ext]' 
+        },
     ]
   };
 

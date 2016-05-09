@@ -1,5 +1,5 @@
 export default function apiRequestInterceptor () {
-  "ngInclude";
+  "ngInject";
   const BASE_API_PATH = 'http://lvh.me:3000/api/v1';
 
   return {
