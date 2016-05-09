@@ -1,5 +1,5 @@
 {
-  "name": "sportmatrix",
+  "name": "akrapeople2",
   "version": "1.0.0",
   "description": "== README",
   "main": "index.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:sportmatrix/sportmatrix.git"
+    "url": "git+ssh://git@gitlab.com:AkraPolska/akra-people2.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://www.pivotaltracker.com/n/projects/1567689"
+    "url": "https://www.pivotaltracker.com/n/projects/"
   },
-  "homepage": "https://github.com/sportmatrix/sportmatrix/wiki",
+  "homepage": "https://gitlab.com/AkraPolska/akra-people2/wikis/home",
   "devDependencies": {
     "angular-mocks": "^1.5.5",
     "babel-core": "^6.7.6",

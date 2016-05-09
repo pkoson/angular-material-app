@@ -2,8 +2,8 @@
 # config valid only for current version of Capistrano
 lock '3.4.1'
 
-set :application, 'sportmatrix'
-set :repo_url, 'git@github.com:sportmatrix/sportmatrix.git'
+set :application, 'akrapeople2'
+set :repo_url, 'git@gitlab.com:AkraPolska/akra-people2.git'
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

@@ -7,14 +7,14 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server 'dev.akra.net', port: 5001, user: 'sportmatrix', roles: %w(web app db)
+server 'dev.akra.net', port: 5001, user: 'akrapeople2', roles: %w{web app db}
 set :rsync_host, ''
 
 set :rails_env, :production
 set :default_shell, '/bin/bash --login'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/sportmatrix/deploy/staging'
+set :deploy_to, '/home/akrapeople2/deploy/staging'
 
 set :keep_releases, 5
 
@@ -41,7 +41,7 @@ namespace :angular do
         with rails_env: :production do
           execute 'cd ./client && npm run build'
         end
-        execute "rsync -av --delete -e 'ssh -p 5001' ./public/ sportmatrix@dev.akra.net:#{shared_path}/public/client/"
+        execute "rsync -av --delete -e 'ssh -p 5001' ./public/ akrapeople2@dev.akra.net:#{shared_path}/public/client/"
       end
     end
   end
