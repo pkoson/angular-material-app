@@ -3,14 +3,14 @@ import translateSwitcher  from './translateSwitcher.directive';
 describe('translateSwitcher', () => {
   let fakeData = {};
   let mocks = {};
-  let $compile, $rootScope;
+  let $compile, $rootScope, $componentController, component;
 
   fakeData.language = 'xxx';
 
   beforeEach(() => {
     angular
       .module('mock.app.components.translateSwitcher', [])
-        .directive('translateSwitcher', translateSwitcher);
+        .component('translateSwitcher', translateSwitcher);
     angular.mock.module('mock.app.components.translateSwitcher');
 
     mocks.$translate = jasmine.createSpyObj('$translate', ['use']);
@@ -19,7 +19,8 @@ describe('translateSwitcher', () => {
       $provide.value('$translate', mocks.$translate);
     });
 
-    window.inject((_$compile_, _$rootScope_) => {
+    window.inject((_$compile_, _$rootScope_, _$componentController_) => {
+      $componentController = _$componentController_;
       $compile = _$compile_;
       $rootScope = _$rootScope_;
     });
@@ -39,8 +40,8 @@ describe('translateSwitcher', () => {
     let element = $compile("<translate-switcher></translate-switcher>")($rootScope);
     $rootScope.$digest();
 
-    let isolateScope = element.isolateScope();
-    isolateScope.changeLanguage(fakeData.language);
+    component = $componentController('translateSwitcher', null);
+    component.changeLanguage(fakeData.language);
 
     expect(mocks.$translate.use).toHaveBeenCalledWith(fakeData.language);
   });
@@ -49,10 +50,10 @@ describe('translateSwitcher', () => {
     let element = $compile("<translate-switcher></translate-switcher>")($rootScope);
     $rootScope.$digest();
 
-    let isolateScope = element.isolateScope();
+    component = $componentController('translateSwitcher', null);
     $rootScope.$broadcast('$translateChangeEnd', fakeData);
 
-    expect(isolateScope.currentLanguage).toEqual(fakeData.language);
+    expect(component.$scope.currentLanguage).toEqual(fakeData.language);
   });
 
 });
