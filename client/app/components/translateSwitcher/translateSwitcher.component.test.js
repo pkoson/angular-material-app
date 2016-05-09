@@ -1,4 +1,4 @@
-import translateSwitcher  from './translateSwitcher.directive';
+import translateSwitcher  from './translateSwitcher.component';
 
 describe('translateSwitcher', () => {
   let fakeData = {};
