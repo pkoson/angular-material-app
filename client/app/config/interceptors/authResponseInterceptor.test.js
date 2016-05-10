@@ -9,12 +9,12 @@ describe('authResponseInterceptor', () => {
   fakedData.rejection = {
     status: 401
   };
-  
+
   fakedData.success = {
     status: 200
   };
 
-  
+
   beforeEach(() => {
     angular
       .module('mock.app.config', [])
@@ -22,7 +22,7 @@ describe('authResponseInterceptor', () => {
         .config(function($httpProvider) {
           $httpProvider.interceptors.push('authResponseInterceptor');
         });
-    
+
     angular.mock.module('mock.app.config', (_$httpProvider_) => {
       $httpProvider = _$httpProvider_;
     });
@@ -30,14 +30,14 @@ describe('authResponseInterceptor', () => {
     mocks.$location = jasmine.createSpyObj('$location', ['path']);
     mocks.$q = jasmine.createSpyObj('$q', ['reject']);
 
-    window.module($provide => { 
-      $provide.value('$location', mocks.$location); 
-      $provide.value('$q', mocks.$q); 
+    window.module($provide => {
+      $provide.value('$location', mocks.$location);
+      $provide.value('$q', mocks.$q);
     });
-  
+
     window.inject((_authResponseInterceptor_) => {
       interceptor = _authResponseInterceptor_;
-    }); 
+    });
   });
 
 

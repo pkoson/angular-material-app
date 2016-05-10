@@ -22,6 +22,7 @@ describe('apiRequestInterceptor', () => {
       $httpProvider = _$httpProvider_;
     });
 
+
     mocks.$location = {
       host: jasmine.createSpy()
     };

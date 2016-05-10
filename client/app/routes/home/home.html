@@ -1,14 +1,12 @@
-
-
 <div layout="column" flex layout-padding layout-align="start none">
-  <md-subheader class="md-primary">Users list with Scooby Doo</md-subheader>
+  <md-subheader class="md-primary"><h2>{{'homeTitle' | translate}}</h2></md-subheader>
   <div layout="row">
     <div style="width:480px">
       <img style="max-width:100%" src="./images/scooby.jpg" alt="">
     </div>
     <md-content flex>
-      <md-list>
-        <md-list-item class="md-2-line" ng-repeat="user in home.users">
+            <md-list>
+        <md-list-item class="md-2-line" ng-repeat="user in HomeCtrl.users">
           <div class="md-list-item-text" layout="column">
             <h3>{{user.name}}</h3>
             <p>{{user.email}}</p>

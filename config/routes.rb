@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth', skip: [:registrations, :confirmations]
       resources :users, except: [:new, :edit]
+      get 'locales' => 'locales#index'
     end
   end
 end

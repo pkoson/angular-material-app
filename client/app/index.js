@@ -14,6 +14,10 @@ import login from './routes/login';
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 
+import angularTranslate from 'angular-translate';
+import angularTranslateLoaderUrl from 'angular-translate-loader-url';
+import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
+import ngCookies from 'angular-cookies';
 import 'angular-material/angular-material.css';
 
 const ngModule = angular
@@ -23,6 +27,11 @@ const ngModule = angular
         ngtokenauth,
         angularMaterial,
         angularAnimate,
+        angularTranslate,
+        angularTranslateLoaderUrl,
+        angularTranslateStorageCookie,
+        ngCookies,
+
 
         // Configs
         config,
@@ -33,4 +42,3 @@ const ngModule = angular
         home,
         login
       ]);
-      
