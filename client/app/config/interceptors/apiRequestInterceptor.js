@@ -7,7 +7,7 @@ export default function apiRequestInterceptor ($location) {
       BASE_API_PATH = 'http://lvh.me:3000/api/v1';
     break;
     default:
-      BASE_API_PATH = 'http://sportmatrix.dev.akra.net/api/v1';
+      BASE_API_PATH = 'http://ap2.dev.akra.net/api/v1';
   }
 
   return {

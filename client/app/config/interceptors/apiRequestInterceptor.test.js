@@ -50,10 +50,10 @@ describe('apiRequestInterceptor', () => {
     });
   });
 
-  describe('sportmatrix.dev.akra.net server', () => {
+  describe('ap2.dev.akra.net server', () => {
 
     beforeEach(() => {
-      mocks.$location.host.and.returnValue('sportmatrix');
+      mocks.$location.host.and.returnValue('ap2');
       window.inject((_apiRequestInterceptor_) => {
         interceptor = _apiRequestInterceptor_;
       });
@@ -63,7 +63,7 @@ describe('apiRequestInterceptor', () => {
       let config = angular.copy(fakedData.config);
       let request = interceptor.request(config);
 
-      expect(request.url).toEqual('http://sportmatrix.dev.akra.net/api/v1' + fakedData.config.url);
+      expect(request.url).toEqual('http://ap2.dev.akra.net/api/v1' + fakedData.config.url);
     });
   });
 });
