@@ -1,31 +1,32 @@
 export default function routes($stateProvider) {
+  "ngInject";
   $stateProvider
 
     .state('login', {
       url: '/login',
-      template: require('./components/loginForm/loginForm.html'),
-      controller: 'LoginFormCtrl',
-      controllerAs: 'LoginFormCtrl'
+      template: require('./routes/login/login.html'),
+      controller: 'LoginCtrl',
+      controllerAs: 'LoginCtrl'
     })
 
     .state('home', {
       url: '/',
       template: require('./routes/home/home.html'),
       controller: 'HomeController',
-      controllerAs: 'home'
+      controllerAs: 'HomeCtrl'
     })
       .state('home.users', {
         url: 'users',
         template: require('./routes/users/users.html'),
         controller: 'UsersController',
-        controllerAs: 'usersCtr'
+        controllerAs: 'UsersCtr'
       })
 
         .state('home.users.show', {
           url: '/user/:id',
           template: require('./routes/user/user.html'),
           controller: 'UserController',
-          controllerAs: 'userCtr'
+          controllerAs: 'UserCtr'
         })
       .state('home.candidates', {
         url: 'candidates',

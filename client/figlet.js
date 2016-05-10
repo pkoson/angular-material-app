@@ -1,8 +1,8 @@
 var figlet = require('figlet');
  
 console.log('\n'); 
-figlet.text('     SportMatrix     ', {
-    font: 'nancyj-underlined',
+figlet.text('AkraPeople2', {
+    font: 'doom',
     horizontalLayout: 'default',
     verticalLayout: 'default'
 }, function(err, data) {

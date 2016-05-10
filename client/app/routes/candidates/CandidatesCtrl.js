@@ -1,5 +1,6 @@
 export default class CandidatesCtrl {
   constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia, $mdSidenav) {
+    "ngInject";
     let vm = this;
     vm.$http = $http;
     vm.appConfig = appConfig;

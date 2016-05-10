@@ -7,7 +7,7 @@
         </md-datepicker>
       </div>
       <div layout="row">
-        <div layout="column" class="addimage" flex="30" layout-align="center center" ngf-background="file || '/thumb.jpg'" ngf-size="{width: 200, height: 200, quality: 0.9}">
+        <div layout="column" class="addimage" flex="30" layout-align="center center" ngf-background="file || ' '" ngf-size="{width: 200, height: 200, quality: 0.9}">
           <md-button  ngf-select="uploadFiles($file, $invalidFiles)"
           accept="image/*" ngf-max-height="1000" ng-model="file" name="file" ngf-max-size="1MB" md-no-ink class="md-primary" ng-hide="AddNewCtrl.imageStatus">Dodaj zdjęcie</md-button>
           <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}

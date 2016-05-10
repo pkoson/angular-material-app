@@ -1,5 +1,6 @@
 export default class UsersController {
   constructor($http, $location, appConfig) {
+    "ngInject";
     this.$http = $http;
     this.$location = $location;
     this.appConfig = appConfig;
@@ -8,7 +9,7 @@ export default class UsersController {
 
   getUsers(){
     this.$http
-      .get(this.appConfig.apiUrl+'/users')
+      .get('/users')
       .then((response) => {
         this.users = response.data;
         return  this.users;

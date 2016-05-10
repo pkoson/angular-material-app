@@ -1,5 +1,6 @@
 export default class UserController {
   constructor($http, $stateParams, appConfig) {
+    "ngInject";
     this.$http = $http;
     this.usersId = $stateParams.id;
     this.appConfig = appConfig;
@@ -8,7 +9,7 @@ export default class UserController {
 
   getUser(){
     this.$http
-      .get(this.appConfig.apiUrl+'/users/'+this.usersId)
+      .get('/users/'+this.usersId)
       .then((response) => {
         this.user = response.data;
         return  this.user;

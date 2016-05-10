@@ -1,13 +1,14 @@
+# frozen_string_literal: true
 require File.expand_path('../boot', __FILE__)
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
@@ -16,6 +17,7 @@ require "action_view/railtie"
 Bundler.require(*Rails.groups)
 
 module AkraPeople2
+  # AkraPeople2 Application
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -27,7 +29,10 @@ module AkraPeople2
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.available_locales = %w(pl en cn)
     config.i18n.default_locale = :pl
+
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
@@ -36,9 +41,9 @@ module AkraPeople2
       allow do
         origins '*'
         resource '*',
-          :headers => :any,
-          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-          :methods => [:get, :post, :options, :delete, :put]
+                 headers: :any,
+                 expose: ['access-token', 'expiry', 'token-type', 'uid', 'client', 'User-Language'],
+                 methods: [:get, :post, :options, :delete, :put]
       end
     end
   end

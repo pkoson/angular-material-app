@@ -3,42 +3,50 @@ import uirouter from 'angular-ui-router';
 import 'angular-cookie';
 import ngtokenauth from './lib/ng-token-auth.min.js';
 
-import routing from './routing';
-import config from './config/main';
-import ngTheme from './config/ngTheme';
-import constants from './config/constants';
+import routes from './routes';
+import config from './config';
 
 import components from './components';
-import services from './services';
 
 import home from './routes/home/';
 import users from './routes/users/';
 import user from './routes/user/';
 import candidates from './routes/candidates';
+import login from './routes/login';
 
 import style from './assets/stylesheets/style.css';
-
-import 'angular-material/angular-material.css';
-
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 import ngMessages from 'angular-messages';
 
+import angularTranslate from 'angular-translate';
+import angularTranslateLoaderUrl from 'angular-translate-loader-url';
+import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
+import ngCookies from 'angular-cookies';
+import 'angular-material/angular-material.css';
+
 const ngModule = angular
       .module('app', [
+        // External modules
         uirouter,
         ngtokenauth,
         angularMaterial,
         angularAnimate,
-        services,
+        angularTranslate,
+        angularTranslateLoaderUrl,
+        angularTranslateStorageCookie,
+        ngCookies,
+        ngMessages,
+
+        // Configs
+        config,
+        routes,
+
+        // Internal modules
         components,
         home,
         users,
         user,
-        candidates,
-        ngMessages
-      ])
-      .constant('appConfig', constants)
-      .config(config)
-      .config(routing)
-      .config(ngTheme);
+        login,
+        candidates
+      ]);

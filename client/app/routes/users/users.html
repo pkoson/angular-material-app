@@ -1,7 +1,7 @@
 <md-sidenav md-component-id="right" md-is-locked-open="$mdMedia('min-width: 333px')" class="md-sidenav-right md-whiteframe-8dp" md-theme="default">
   <md-subheader class="md-no-sticky">Users List</md-subheader>
-  <md-list ng-repeat="user in usersCtr.users">
-    <md-list-item ng-click="usersCtr.goToUrl('users/user/'+user.id)">
+  <md-list ng-repeat="user in UsersCtr.users">
+    <md-list-item ng-click="UsersCtr.goToUrl('users/user/'+user.id)">
       {{user.name}}
     </md-list-item>
   </md-list>

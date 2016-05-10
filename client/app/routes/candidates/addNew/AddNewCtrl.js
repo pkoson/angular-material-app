@@ -1,5 +1,6 @@
 export default class AddNewCtrl {
   constructor($scope, $mdDialog, $mdMedia, appConfig, Upload, $timeout) {
+    "ngInject";
     let vm = this,
         imageStatus = false;
     vm.imageStatus = imageStatus;
