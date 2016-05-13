@@ -28,7 +28,7 @@ export default class CandidatesCtrl {
       });
   }
 
-  addNewCandidate(navID) {
+  addNewCandidate() {
     this.$mdSidenav('right').toggle();
     this.$location.path('/candidates/addnew');
   }
