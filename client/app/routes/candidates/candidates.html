@@ -22,7 +22,7 @@
           </div>
         </md-toolbar>
         <md-table-container>
-          <table md-table md-row-select multiple ng-model="query.selected">
+          <table md-table multiple ng-model="query.selected">
             <thead md-head md-order="query.order" >
               <tr md-row>
                 <th md-column md-order-by="name"><span>Nazwisko</span></th>
@@ -74,7 +74,7 @@
               </tr>
             </thead>
             <tbody md-body>
-              <tr md-row md-row md-select="candidate" md-select-id="name" md-auto-select ng-repeat="candidate in CandidatesCtrl.candidates | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit | filter:searchText">
+              <tr md-row md-row ng-repeat="candidate in CandidatesCtrl.candidates | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit | filter:searchText">
                 <td md-cell>{{candidate.name}}</td>
                 <td md-cell>{{candidate.name}}</td>
                 <td md-cell>{{candidate.city}}</td>
