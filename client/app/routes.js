@@ -34,6 +34,12 @@ export default function routes($stateProvider) {
         controller: 'CandidatesCtrl',
         controllerAs: 'CandidatesCtrl'
       })
+        .state('home.candidates.addnew', {
+          url: '/addnew',
+          template: require('./routes/candidates/addNew/addNewCandidate.html'),
+          controller: 'AddNewCtrl',
+          controllerAs: 'AddNewCtrl'
+        })
         .state('home.candidates.showCandidate', {
           url: '/candidate/:id',
           template: require('./routes/candidates/showCandidate/showCandidate.html'),

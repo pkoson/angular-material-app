@@ -28,12 +28,13 @@ export default class CandidatesCtrl {
       });
   }
 
-  addNewUser(navID) {
-        this.$mdSidenav(navID)
-          .toggle();
-    }
+  addNewCandidate(navID) {
+    this.$mdSidenav('right').toggle();
+    this.$location.path('/candidates/addnew');
+  }
 
-  goToUrl(path) {
-    this.$location.path(path);
+  editCandidate(id) {
+    this.$mdSidenav('right').toggle();
+    this.$location.path('/candidates/candidate/'+id);
   }
 }
