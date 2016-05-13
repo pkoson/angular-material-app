@@ -33,5 +33,11 @@ export default function routes($stateProvider) {
         template: require('./routes/candidates/candidates.html'),
         controller: 'CandidatesCtrl',
         controllerAs: 'CandidatesCtrl'
-      });
+      })
+        .state('home.candidates.showCandidate', {
+          url: '/candidate/:id',
+          template: require('./routes/candidates/showCandidate/showCandidate.html'),
+          controller: 'ShowCandidateCtrl',
+          controllerAs: 'ShowCandidateCtrl'
+        });
     }

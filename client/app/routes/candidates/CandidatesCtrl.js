@@ -3,6 +3,7 @@ export default class CandidatesCtrl {
     "ngInject";
     let vm = this;
     vm.$http = $http;
+    vm.$location = $location;
     vm.appConfig = appConfig;
     vm.$scope = $scope;
     vm.$scope.query = {
@@ -31,4 +32,8 @@ export default class CandidatesCtrl {
         this.$mdSidenav(navID)
           .toggle();
     }
+
+  goToUrl(path) {
+    this.$location.path(path);
+  }
 }
