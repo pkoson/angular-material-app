@@ -9,8 +9,6 @@ import config from './config';
 import components from './components';
 
 import home from './routes/home/';
-import users from './routes/users/';
-import user from './routes/user/';
 import candidates from './routes/candidates';
 import login from './routes/login';
 
@@ -45,8 +43,6 @@ const ngModule = angular
         // Internal modules
         components,
         home,
-        users,
-        user,
         login,
         candidates
       ]);

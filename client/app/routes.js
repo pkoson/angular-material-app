@@ -15,19 +15,6 @@ export default function routes($stateProvider) {
       controller: 'HomeController',
       controllerAs: 'HomeCtrl'
     })
-      .state('home.users', {
-        url: 'users',
-        template: require('./routes/users/users.html'),
-        controller: 'UsersController',
-        controllerAs: 'UsersCtr'
-      })
-
-        .state('home.users.show', {
-          url: '/user/:id',
-          template: require('./routes/user/user.html'),
-          controller: 'UserController',
-          controllerAs: 'UserCtr'
-        })
       .state('home.candidates', {
         url: 'candidates',
         template: require('./routes/candidates/candidates.html'),
