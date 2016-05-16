@@ -1,4 +1,4 @@
-export default class LogoutCtrl {
+export default class UserMenuCtrl {
   constructor($auth, $state) {
     "ngInject";
     this.$auth = $auth;
