@@ -1,5 +1,5 @@
 export default class CandidatesCtrl {
-  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia, $mdSidenav) {
+  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia, $mdSidenav, getFromApi) {
     "ngInject";
     let vm = this;
     vm.$http = $http;
@@ -16,16 +16,13 @@ export default class CandidatesCtrl {
     vm.$mdDialog = $mdDialog;
     vm.$mdSidenav = $mdSidenav;
     vm.$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-    vm.getCandidates(vm);
-  }
-
-  getCandidates(vm){
-    vm.$http
-      .get(vm.appConfig.apiUrl+'/users')
-      .then((response) => {
+    let askForPromise = getFromApi.getPromise('/users');
+    askForPromise.then(
+      (response)=> {
         vm.candidates = response.data;
-        return  vm.candidates;
-      });
+        return vm.candidates;
+      }
+    );
   }
 
   addNewCandidate() {

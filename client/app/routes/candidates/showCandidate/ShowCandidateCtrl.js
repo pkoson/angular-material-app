@@ -1,20 +1,18 @@
 export default class ShowCandidateCtrl {
-  constructor($http, $stateParams, appConfig) {
+  constructor($http, $stateParams, appConfig, getFromApi) {
     "ngInject";
-    var vm = this;
+    let vm = this;
+    let candidate;
     vm.$http = $http;
     vm.usersId = $stateParams.id;
     vm.appConfig = appConfig;
-    vm.getCandidate(vm);
-  }
-
-  getCandidate(vm){
-    vm.$http
-      .get(vm.appConfig.apiUrl+'/users/'+vm.usersId)
-      .then((response) => {
+    let askForPromise = getFromApi.getPromise('/users/'+vm.usersId);
+    askForPromise.then(
+      (response)=> {
         vm.candidate = response.data;
-        return  vm.candidate;
-      });
+        console.log("response", vm.candidate);
+      }
+    );
   }
   updateCandidate(data){
     this.$http

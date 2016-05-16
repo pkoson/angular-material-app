@@ -17,6 +17,8 @@ import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 import ngMessages from 'angular-messages';
 
+import getFromApi from './services/getFromApi';
+
 import angularTranslate from 'angular-translate';
 import angularTranslateLoaderUrl from 'angular-translate-loader-url';
 import angularTranslateStorageCookie from 'angular-translate-storage-cookie';
@@ -45,4 +47,5 @@ const ngModule = angular
         home,
         login,
         candidates
-      ]);
+      ])
+      .service('getFromApi', getFromApi);
