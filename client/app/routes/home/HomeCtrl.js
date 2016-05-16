@@ -1,4 +1,4 @@
-export default class HomeController {
+export default class HomeCtrl {
   constructor($http, $mdSidenav, appConfig) {
     "ngInject";
     this.$http = $http;
