@@ -10,4 +10,9 @@ export default class LogoutCtrl {
         this.$state.go('login');
       });
   }
+  openMenu($mdOpenMenu, ev) {
+    let originatorEv;
+    originatorEv = ev;
+    $mdOpenMenu(ev);
+  }
 }

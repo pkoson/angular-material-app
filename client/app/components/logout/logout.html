@@ -1,1 +1,20 @@
-<a ng-click="LogoutCtrl.logout()" href="">wyloguj</a>
+<md-menu>
+  <md-button aria-label="Open phone interactions menu" ng-click="LogoutCtrl.openMenu($mdOpenMenu, $event)">
+    {{user.name}} <md-icon>keyboard_arrow_down</md-icon>
+  </md-button>
+  <md-menu-content width="4">
+    <md-menu-item>
+      <md-button ng-click="ctrl">
+        <md-icon>settings</md-icon>
+        <span>ustawienia</span>
+      </md-button>
+    </md-menu-item>
+    <md-menu-divider></md-menu-divider>
+    <md-menu-item>
+      <md-button ng-click="LogoutCtrl.logout()">
+        <md-icon>exit_to_app</md-icon>
+        <span>wyloguj</span>
+      </md-button>
+    </md-menu-item>
+  </md-menu-content>
+</md-menu>
