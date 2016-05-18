@@ -1,5 +1,5 @@
 export default class CandidatesCtrl {
-  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia, $mdSidenav, getFromApi) {
+  constructor($http, $location, appConfig, $scope, $mdMedia, $mdSidenav, getFromApi, deleteCandidateApi) {
     "ngInject";
     let vm = this;
     vm.$http = $http;
@@ -13,8 +13,8 @@ export default class CandidatesCtrl {
       selected: []
     };
     vm.$mdMedia = $mdMedia;
-    vm.$mdDialog = $mdDialog;
     vm.$mdSidenav = $mdSidenav;
+    vm.deleteCandidateApi = deleteCandidateApi;
     vm.$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
     let askForPromise = getFromApi.getPromise('/users');
     askForPromise.then(
@@ -34,21 +34,8 @@ export default class CandidatesCtrl {
     this.$mdSidenav('right').toggle();
     this.$location.path('/candidates/candidate/'+id);
   }
+
   deleteCandidate(id, ev, name) {
-    let confirm = this.$mdDialog.confirm()
-          .title('Chcesz usunąć użytkownika '+name+'?')
-          .ariaLabel('Usuwanie użytkownika '+name)
-          .targetEvent(ev)
-          .ok('Tak')
-          .cancel('Nie');
-    this.$mdDialog.show(confirm).then(()=> {
-      console.log('usuwam usera '+id+' '+name);
-      let askForPromise = this.$http.delete(this.appConfig.apiUrl+'/users/'+id);
-      askForPromise.then(
-        (response)=> {
-          console.log("response", response);
-        }
-      );
-    });
+    this.deleteCandidateApi.del(id, ev, name);
   }
 }

@@ -18,6 +18,7 @@ import angularMaterial from 'angular-material';
 import ngMessages from 'angular-messages';
 
 import getFromApi from './services/getFromApi';
+import deleteCandidateApi from './services/deleteCandidateApi';
 
 import angularTranslate from 'angular-translate';
 import angularTranslateLoaderUrl from 'angular-translate-loader-url';
@@ -48,4 +49,5 @@ const ngModule = angular
         login,
         candidates
       ])
-      .service('getFromApi', getFromApi);
+      .service('getFromApi', getFromApi)
+      .service('deleteCandidateApi', deleteCandidateApi);
