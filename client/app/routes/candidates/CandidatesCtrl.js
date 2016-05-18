@@ -1,8 +1,9 @@
 export default class CandidatesCtrl {
-  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia, $mdSidenav) {
+  constructor($http, $location, appConfig, $scope, $mdDialog, $mdMedia, $mdSidenav, getFromApi) {
     "ngInject";
     let vm = this;
     vm.$http = $http;
+    vm.$location = $location;
     vm.appConfig = appConfig;
     vm.$scope = $scope;
     vm.$scope.query = {
@@ -15,20 +16,22 @@ export default class CandidatesCtrl {
     vm.$mdDialog = $mdDialog;
     vm.$mdSidenav = $mdSidenav;
     vm.$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-    vm.getCandidates(vm);
-  }
-
-  getCandidates(vm){
-    vm.$http
-      .get(vm.appConfig.apiUrl+'/users')
-      .then((response) => {
+    let askForPromise = getFromApi.getPromise('/users');
+    askForPromise.then(
+      (response)=> {
         vm.candidates = response.data;
-        return  vm.candidates;
-      });
+        return vm.candidates;
+      }
+    );
   }
 
-  addNewUser(navID) {
-        this.$mdSidenav(navID)
-          .toggle();
-    }
+  addNewCandidate() {
+    this.$mdSidenav('right').toggle();
+    this.$location.path('/candidates/addnew');
+  }
+
+  editCandidate(id) {
+    this.$mdSidenav('right').toggle();
+    this.$location.path('/candidates/candidate/'+id);
+  }
 }

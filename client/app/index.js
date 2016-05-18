@@ -9,8 +9,6 @@ import config from './config';
 import components from './components';
 
 import home from './routes/home/';
-import users from './routes/users/';
-import user from './routes/user/';
 import candidates from './routes/candidates';
 import login from './routes/login';
 
@@ -18,6 +16,8 @@ import style from './assets/stylesheets/style.css';
 import angularAnimate from 'angular-animate';
 import angularMaterial from 'angular-material';
 import ngMessages from 'angular-messages';
+
+import getFromApi from './services/getFromApi';
 
 import angularTranslate from 'angular-translate';
 import angularTranslateLoaderUrl from 'angular-translate-loader-url';
@@ -45,8 +45,7 @@ const ngModule = angular
         // Internal modules
         components,
         home,
-        users,
-        user,
         login,
         candidates
-      ]);
+      ])
+      .service('getFromApi', getFromApi);

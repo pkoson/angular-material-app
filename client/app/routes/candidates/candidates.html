@@ -1,13 +1,14 @@
 <div flex layout="row">
   <md-sidenav id="rightsidebar" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" flex>
-      <add-New-User-Directive flex></add-New-User-Directive>
+      <div ui-view layout="row">
+      </div>
   </md-sidenav>
   <md-content>
     <div class="candidates">
       <md-content layout="column" ms-scroll flex md-whiteframe="2" class="l-content-background">
         <md-toolbar class="md-table-toolbar md-default">
           <div class="md-toolbar-tools">
-            <md-button aria-label="add new user" class="md-fab md-mini" ng-click="CandidatesCtrl.addNewUser('right')">
+            <md-button aria-label="add new user" class="md-fab md-mini" ng-click="CandidatesCtrl.addNewCandidate()">
               <md-icon>add</md-icon>
             </md-button>
             <span>Baza kandydatów</span>
@@ -21,7 +22,7 @@
           </div>
         </md-toolbar>
         <md-table-container>
-          <table md-table md-row-select multiple ng-model="query.selected">
+          <table md-table multiple ng-model="query.selected">
             <thead md-head md-order="query.order" >
               <tr md-row>
                 <th md-column md-order-by="name"><span>Nazwisko</span></th>
@@ -73,7 +74,7 @@
               </tr>
             </thead>
             <tbody md-body>
-              <tr md-row md-row md-select="candidate" md-select-id="name" md-auto-select ng-repeat="candidate in CandidatesCtrl.candidates | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit | filter:searchText">
+              <tr md-row md-row ng-repeat="candidate in CandidatesCtrl.candidates | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit | filter:searchText">
                 <td md-cell>{{candidate.name}}</td>
                 <td md-cell>{{candidate.name}}</td>
                 <td md-cell>{{candidate.city}}</td>
@@ -86,7 +87,7 @@
                 <td md-cell>{{candidate.name}}</td>
                 <td md-cell>
                   <div layout="row">
-                    <md-button aria-label="edit {{candidate.name}}" ng-click="null" class="md-icon-button"><md-icon class="md-accent">build</md-icon></md-button>
+                    <md-button aria-label="edit {{candidate.name}}" ng-click="CandidatesCtrl.editCandidate(candidate.id)" class="md-icon-button"><md-icon class="md-accent">build</md-icon></md-button>
                     <md-button aria-label="remove {{candidate.name}}" ng-click="null" class="md-icon-button"><md-icon class="md-accent">delete</md-icon></md-button>
                   </div>
                 </td>
@@ -98,5 +99,4 @@
       </md-content>
     </div>
   </md-content>
-
 </div>

@@ -15,23 +15,22 @@ export default function routes($stateProvider) {
       controller: 'HomeCtrl',
       controllerAs: 'HomeCtrl'
     })
-      .state('home.users', {
-        url: 'users',
-        template: require('./routes/users/users.html'),
-        controller: 'UsersController',
-        controllerAs: 'UsersCtr'
-      })
-
-        .state('home.users.show', {
-          url: '/user/:id',
-          template: require('./routes/user/user.html'),
-          controller: 'UserController',
-          controllerAs: 'UserCtr'
-        })
       .state('home.candidates', {
         url: 'candidates',
         template: require('./routes/candidates/candidates.html'),
         controller: 'CandidatesCtrl',
         controllerAs: 'CandidatesCtrl'
-      });
+      })
+        .state('home.candidates.addnew', {
+          url: '/addnew',
+          template: require('./routes/candidates/addNew/addNewCandidate.html'),
+          controller: 'AddNewCtrl',
+          controllerAs: 'AddNewCtrl'
+        })
+        .state('home.candidates.showCandidate', {
+          url: '/candidate/:id',
+          template: require('./routes/candidates/showCandidate/showCandidate.html'),
+          controller: 'ShowCandidateCtrl',
+          controllerAs: 'ShowCandidateCtrl'
+        });
     }
