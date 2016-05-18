@@ -88,7 +88,7 @@
                 <td md-cell>
                   <div layout="row">
                     <md-button aria-label="edit {{candidate.name}}" ng-click="CandidatesCtrl.editCandidate(candidate.id)" class="md-icon-button"><md-icon class="md-accent">build</md-icon></md-button>
-                    <md-button aria-label="remove {{candidate.name}}" ng-click="null" class="md-icon-button"><md-icon class="md-accent">delete</md-icon></md-button>
+                    <md-button aria-label="remove {{candidate.name}}" ng-click="CandidatesCtrl.deleteCandidate(candidate.id, $event, candidate.name)" class="md-icon-button"><md-icon class="md-accent">delete</md-icon></md-button>
                   </div>
                 </td>
               </tr>

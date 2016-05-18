@@ -34,4 +34,21 @@ export default class CandidatesCtrl {
     this.$mdSidenav('right').toggle();
     this.$location.path('/candidates/candidate/'+id);
   }
+  deleteCandidate(id, ev, name) {
+    let confirm = this.$mdDialog.confirm()
+          .title('Chcesz usunąć użytkownika '+name+'?')
+          .ariaLabel('Usuwanie użytkownika '+name)
+          .targetEvent(ev)
+          .ok('Tak')
+          .cancel('Nie');
+    this.$mdDialog.show(confirm).then(()=> {
+      console.log('usuwam usera '+id+' '+name);
+      let askForPromise = this.$http.delete(this.appConfig.apiUrl+'/users/'+id);
+      askForPromise.then(
+        (response)=> {
+          console.log("response", response);
+        }
+      );
+    });
+  }
 }
