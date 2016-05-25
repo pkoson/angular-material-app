@@ -16,7 +16,7 @@ export default class ShowCandidateCtrl {
   }
   updateCandidate(data){
     this.$http
-        .patch(this.appConfig.apiUrl+'/users/'+this.usersId, data)
+        .put(this.appConfig.apiUrl+'/users/'+this.usersId, data)
         .then((response) => {
           console.log("response", response);
         });
