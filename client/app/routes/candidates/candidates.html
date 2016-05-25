@@ -26,9 +26,9 @@
             <thead md-head md-order="query.order" >
               <tr md-row>
                 <th md-column md-order-by="name"><span>Nazwisko</span></th>
-                <th md-column><span>Imię</span></th>
-                <th md-column>Miasto</th>
-                <th md-column>
+                <th md-column md-order-by="lastname"><span>Imię</span></th>
+                <th md-column md-order-by="city">Miasto</th>
+                <th md-column md-order-by="summaryexpirence">
                   <span>
                     Dośw. łączne
                     <md-tooltip md-direction="top">
@@ -36,7 +36,7 @@
                     </md-tooltip>
                   </span>
                 </th>
-                <th md-column>
+                <th md-column md-order-by="firsttechnology">
                   <span>
                     Tech. #1
                     <md-tooltip md-direction="top">
@@ -44,7 +44,7 @@
                     </md-tooltip>
                   </span>
                 </th>
-                <th md-column>
+                <th md-column md-order-by="firsttechexp">
                   <span>
                     Dośw. tech. #1
                     <md-tooltip md-direction="top">
@@ -52,7 +52,7 @@
                     </md-tooltip>
                   </span>
                 </th>
-                <th md-column>
+                <th md-column md-order-by="secondtechnology">
                   <span>
                     Tech. #2
                     <md-tooltip md-direction="top">
@@ -60,7 +60,7 @@
                     </md-tooltip>
                   </span>
                 </th>
-                <th md-column>
+                <th md-column md-order-by="secondexp">
                   <span>
                     Dośw. tech. #2
                     <md-tooltip md-direction="top">
@@ -68,8 +68,8 @@
                     </md-tooltip>
                   </span>
                 </th>
-                <th md-column>Języki</th>
-                <th md-column>Wyjazd krótki</th>
+                <th md-column md-order-by="languages">Języki</th>
+                <th md-column  md-order-by="shorttrip">Wyjazd krótki</th>
                 <th md-column>Akcje</th>
               </tr>
             </thead>
@@ -79,16 +79,19 @@
                 <td md-cell>{{candidate.name}}</td>
                 <td md-cell>{{candidate.city}}</td>
                 <td md-cell>{{candidate.summaryexpirence | number: 1}}</td>
-                <td md-cell>{{candidate.firsttechnology}}</td>
-                <td md-cell>{{candidate.firsttechexp}}</td>
-                <td md-cell>{{candidate.name}}</td>
-                <td md-cell>{{candidate.name}}</td>
-                <td md-cell>{{candidate.name}}</td>
-                <td md-cell>{{candidate.name}}</td>
+                <td md-cell>{{candidate.firsttechnology | number: 1}}</td>
+                <td md-cell>{{candidate.firsttechexp | number: 1}}</td>
+                <td md-cell>{{candidate.secondtechnology | number: 1}}</td>
+                <td md-cell>{{candidate.secondexp | number: 1}}</td>
+                <td md-cell>{{candidate.languages}}</td>
+                <td md-cell>{{candidate.shorttrip}}</td>
                 <td md-cell>
                   <div layout="row">
                     <md-button aria-label="edit {{candidate.name}}" ng-click="CandidatesCtrl.editCandidate(candidate.id)" class="md-icon-button"><md-icon class="md-accent">build</md-icon></md-button>
                     <md-button aria-label="remove {{candidate.name}}" ng-click="CandidatesCtrl.deleteCandidate(candidate.id, $event, candidate.name)" class="md-icon-button"><md-icon class="md-accent">delete</md-icon></md-button>
+                    <md-button aria-label="show CV of {{candidate.name}}" ng-click="CandidatesCtrl.showCV(candidate.id)" class="md-icon-button">
+                      <md-icon class="md-accent">recent_actors</md-icon><md-tooltip md-direction="top">Pokaż CV</md-tooltip>
+                    </md-button>
                   </div>
                 </td>
               </tr>
