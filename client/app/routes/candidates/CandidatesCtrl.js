@@ -22,13 +22,17 @@ export default class CandidatesCtrl {
     );
   }
 
+  toogleMenu(position) {
+    this.$mdSidenav(position).toggle();
+  }
+
   addNewCandidate() {
-    this.$mdSidenav('right').toggle();
+    this.toogleMenu('right');
     this.$location.path('/candidates/addnew');
   }
 
   editCandidate(id) {
-    this.$mdSidenav('right').toggle();
+    this.toogleMenu('right');
     this.$location.path('/candidates/candidate/'+id);
   }
 
