@@ -15,7 +15,7 @@ class LoginFormCtrl {
   }
 
   handleSuccess(response) {
-    this.$state.go('home');
+    this.$state.go('app.home');
   }
 
   handleError(response) {

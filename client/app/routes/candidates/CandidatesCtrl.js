@@ -28,12 +28,12 @@ export default class CandidatesCtrl {
 
   addNewCandidate() {
     this.toogleMenu('right');
-    this.$location.path('/candidates/addnew');
+    this.$location.path('/app/candidates/addnew');
   }
 
   editCandidate(id) {
     this.toogleMenu('right');
-    this.$location.path('/candidates/candidate/'+id);
+    this.$location.path('/app/candidates/candidate/'+id);
   }
 
   deleteCandidate(id, ev, name) {
