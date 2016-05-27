@@ -16,11 +16,8 @@ export default class CandidatesCtrl {
     vm.$mdSidenav = $mdSidenav;
     vm.deleteCandidateApi = deleteCandidateApi;
     vm.$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-    let askForPromise = getFromApi.getPromise('/users');
-    askForPromise.then(
-      (response)=> {
+    getFromApi.getPromise('/users').then((response)=> {
         vm.candidates = response.data;
-        return vm.candidates;
       }
     );
   }
