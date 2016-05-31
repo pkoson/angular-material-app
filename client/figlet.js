@@ -1,11 +1,11 @@
 var figlet = require('figlet');
- 
-console.log('\n'); 
-figlet.text('AkraPeople2', {
+
+console.log('\n');
+figlet.text('MyApp', {
     font: 'doom',
     horizontalLayout: 'default',
     verticalLayout: 'default'
 }, function(err, data) {
     console.log(data);
     console.log('\n');
-}); 
+});
